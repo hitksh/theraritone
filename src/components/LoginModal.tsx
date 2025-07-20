@@ -72,28 +72,28 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         style={{ backgroundColor: 'var(--card-bg)', borderLeft: '3px solid var(--border-color)' }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="h-full flex flex-col overflow-y-auto">
+        <div className="h-full flex flex-col overflow-y-auto animate-slide-in-right">
           <div className="p-10 flex-1">
             {/* Header - Logo removed to prevent scroll issues */}
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-semibold text-[var(--text-primary)] font-['Playfair_Display']">
+              <h2 className="text-3xl font-semibold text-[var(--text-primary)] font-['Playfair_Display'] animate-fade-in-up">
                 {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
               </h2>
               <button
                 onClick={onClose}
-                className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-all duration-300 p-2 rounded-xl hover:bg-[var(--primary-accent)] hover:bg-opacity-10"
+                className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-all duration-300 p-2 rounded-xl hover:bg-[var(--primary-accent)] hover:bg-opacity-10 hover-lift"
               >
                 <X size={26} />
               </button>
             </div>
 
             {/* Tabs */}
-            <div className="flex mb-8 rounded-xl p-1 border-2 border-[var(--border-color)]" style={{ backgroundColor: 'var(--secondary-bg)' }}>
+            <div className="flex mb-8 rounded-xl p-1 border-2 border-[var(--border-color)] shadow-luxury animate-scale-in" style={{ backgroundColor: 'var(--secondary-bg)' }}>
               <button
                 onClick={() => setActiveTab('login')}
                 className={`flex-1 py-3 px-4 rounded-md text-sm font-medium ${
                   activeTab === 'login'
-                    ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-luxury border-2 border-[var(--border-color)]'
+                    ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-luxury border-2 border-[var(--border-color)] hover-lift'
                     : 'text-[var(--text-secondary)] hover:text-[var(--primary-accent)]'
                 }`}
               >
@@ -103,7 +103,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 onClick={() => setActiveTab('signup')}
                 className={`flex-1 py-3 px-4 rounded-md text-sm font-medium ${
                   activeTab === 'signup'
-                    ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-luxury border-2 border-[var(--border-color)]'
+                    ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-luxury border-2 border-[var(--border-color)] hover-lift'
                     : 'text-[var(--text-secondary)] hover:text-[var(--primary-accent)]'
                 }`}
               >
@@ -114,7 +114,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-6">
               {activeTab === 'signup' && (
                 <div>
-                  <Label htmlFor="name" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Full Name</Label>
+                  <Label htmlFor="name" className="text-[var(--text-primary)] font-['Inter'] font-medium">Full Name</Label>
                   <Input
                     id="name"
                     type="text"
@@ -127,7 +127,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               )}
 
               <div>
-                <Label htmlFor="email" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Email</Label>
+                <Label htmlFor="email" className="text-[var(--text-primary)] font-['Inter'] font-medium">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -139,7 +139,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <div>
-                <Label htmlFor="password" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Password</Label>
+                <Label htmlFor="password" className="text-[var(--text-primary)] font-['Inter'] font-medium">Password</Label>
                 <div className="relative mt-2">
                   <Input
                     id="password"
@@ -162,7 +162,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               {activeTab === 'signup' && (
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="gender" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Gender</Label>
+                    <Label htmlFor="gender" className="text-[var(--text-primary)] font-['Inter'] font-medium">Gender</Label>
                     <select
                       id="gender"
                       value={formData.gender}
@@ -177,7 +177,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <Label htmlFor="stylePreference" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Style Preference</Label>
+                    <Label htmlFor="stylePreference" className="text-[var(--text-primary)] font-['Inter'] font-medium">Style Preference</Label>
                     <select
                       id="stylePreference"
                       value={formData.stylePreference}
@@ -197,7 +197,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full btn-primary py-4 text-base font-medium shadow-luxury hover-lift"
+                className="w-full btn-primary py-4 text-base font-medium shadow-luxury hover-lift transition-all duration-300"
               >
                 {loading ? (
                   <div className="flex items-center justify-center space-x-2">
@@ -216,7 +216,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   <div className="w-full border-t-2 border-[var(--border-color)]" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 text-[var(--text-secondary)] font-['Poppins'] font-medium" style={{ backgroundColor: 'var(--card-bg)' }}>Or</span>
+                  <span className="px-4 text-[var(--text-secondary)] font-['Inter'] font-medium" style={{ backgroundColor: 'var(--card-bg)' }}>Or</span>
                 </div>
               </div>
 
@@ -224,7 +224,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 onClick={handleGoogleSignIn}
                 disabled={loading}
                 variant="outline"
-                className="w-full mt-6 py-4 bg-transparent border-2 border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--primary-accent)] hover:text-white flex items-center justify-center space-x-3 rounded-xl transition-all duration-300 shadow-luxury hover-lift font-['Poppins']"
+                className="w-full mt-6 py-4 bg-transparent border-2 border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--primary-accent)] hover:text-white flex items-center justify-center space-x-3 rounded-xl transition-all duration-300 shadow-luxury hover-lift font-['Inter']"
               >
                 <div className="w-5 h-5 flex items-center justify-center">
                   <svg viewBox="0 0 24 24" className="w-5 h-5">
@@ -238,7 +238,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               </Button>
             </div>
 
-            <div className="mt-8 text-center text-sm text-[var(--text-secondary)] font-['Poppins']">
+            <div className="mt-8 text-center text-sm text-[var(--text-secondary)] font-['Inter']">
               {activeTab === 'login' ? (
                 <>
                   Don't have an account?{' '}

@@ -111,10 +111,10 @@ const ChatWidget: React.FC = () => {
       {/* LUXURY CHAT BUTTON */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-8 right-8 z-40 px-8 py-4 rounded-full transition-all duration-300 luxury-chat flex items-center space-x-4 shadow-luxury hover-lift hover:scale-105"
+        className="fixed bottom-8 right-8 z-40 px-8 py-4 rounded-full transition-all duration-500 luxury-chat flex items-center space-x-4 shadow-luxury hover-lift hover:scale-105 animate-scale-in"
       >
         {/* Logo container */}
-        <div className="w-10 h-10 relative rounded-full overflow-hidden flex items-center justify-center border-2 border-[var(--border-color)]">
+        <div className="w-10 h-10 relative rounded-full overflow-hidden flex items-center justify-center border-2 border-[var(--border-color)] brand-logo">
           <img
             src="/R.png"
             alt="RARITONE Chat"
@@ -125,18 +125,18 @@ const ChatWidget: React.FC = () => {
             }}
           />
         </div>
-        <span className="font-medium text-[var(--text-primary)] font-['Poppins']">
+        <span className="font-medium text-[var(--text-primary)] font-['Inter']">
           Chat with us
         </span>
       </button>
 
       {/* LUXURY CHAT MODAL */}
       {isOpen && (
-        <div className="fixed bottom-28 right-8 z-50 w-96 rounded-2xl overflow-hidden luxury-chat transition-all duration-300 shadow-luxury">
+        <div className="fixed bottom-28 right-8 z-50 w-96 rounded-2xl overflow-hidden luxury-chat transition-all duration-500 shadow-luxury animate-slide-in-right">
           {/* Header */}
           <div className="text-[var(--text-primary)] p-6 flex items-center justify-between border-b-2 border-[var(--border-color)]">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[var(--border-color)]">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[var(--border-color)] brand-logo">
                 <img
                   src="/R.png"
                   alt="RARITONE"
@@ -147,7 +147,7 @@ const ChatWidget: React.FC = () => {
                   }}
                 />
               </div>
-              <span className="font-medium font-['Poppins']">Chat with a client advisor</span>
+              <span className="font-medium font-['Inter']">Chat with a client advisor</span>
             </div>
             
             <div className="flex items-center space-x-2">
@@ -174,7 +174,7 @@ const ChatWidget: React.FC = () => {
               {/* Guest Email Form */}
               {showEmailForm && !user && (
                 <div className="p-6 border-b-2 border-[var(--border-color)]">
-                  <h4 className="font-medium mb-3 text-[var(--text-primary)] font-['Playfair_Display']">Privacy Notice</h4>
+                  <h4 className="font-medium mb-3 text-[var(--text-primary)] font-['Playfair_Display'] text-lg">Privacy Notice</h4>
                   <form onSubmit={handleGuestEmailSubmit} className="space-y-3">
                     <input
                       type="email"
@@ -184,16 +184,16 @@ const ChatWidget: React.FC = () => {
                       className="luxury-input w-full"
                       required
                     />
-                    <p className="text-xs text-[var(--text-secondary)] font-['Poppins']">
+                    <p className="text-xs text-[var(--text-secondary)] font-['Inter']">
                       Your personal data is collected in the course of providing remote chat assistance and will be processed in full compliance with our privacy policy.
                     </p>
                     <div className="flex items-center space-x-2">
                       <input type="checkbox" id="accept" required className="rounded border-2 border-[var(--border-color)]" />
-                      <label htmlFor="accept" className="text-xs text-[var(--text-secondary)] font-['Poppins']">I accept</label>
+                      <label htmlFor="accept" className="text-xs text-[var(--text-secondary)] font-['Inter']">I accept</label>
                     </div>
                     <button
                       type="submit"
-                      className="w-full btn-primary py-3 rounded-xl font-medium shadow-luxury"
+                      className="w-full btn-primary py-3 rounded-xl font-medium shadow-luxury hover-lift"
                     >
                       Start chat
                     </button>
@@ -212,6 +212,7 @@ const ChatWidget: React.FC = () => {
                       >
                         <div
                           className={`max-w-xs px-4 py-3 rounded-xl text-sm transition-all duration-300 font-['Poppins'] ${
+                          className={`max-w-xs px-4 py-3 rounded-xl text-sm transition-all duration-300 font-['Inter'] ${
                             message.isAdmin
                               ? 'luxury-card border-2 border-[var(--border-color)] shadow-luxury'
                               : 'bg-[var(--primary-accent)] text-white'
@@ -225,7 +226,7 @@ const ChatWidget: React.FC = () => {
                     {/* Typing indicator */}
                     {isTyping && (
                       <div className="flex justify-start">
-                        <div className="luxury-card text-[var(--text-primary)] px-3 py-2 rounded-lg text-sm border border-[var(--border-color)]">
+                        <div className="luxury-card text-[var(--text-primary)] px-3 py-2 rounded-lg text-sm border-2 border-[var(--border-color)] shadow-luxury">
                           <div className="flex space-x-1">
                             <div className="w-2 h-2 bg-[var(--primary-accent)] rounded-full animate-bounce"></div>
                             <div className="w-2 h-2 bg-[var(--primary-accent)] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -251,11 +252,11 @@ const ChatWidget: React.FC = () => {
                       />
                       <button
                         onClick={handleSendMessage}
-                        className="px-4 py-2 btn-primary rounded-xl font-medium shadow-luxury hover-lift"
+                        className="px-4 py-2 btn-primary rounded-xl font-medium shadow-luxury hover-lift transition-all duration-300"
                       >
                         <Send size={16} />
                       </button>
-                      <button className="px-4 py-2 btn-secondary rounded-xl shadow-luxury hover-lift">
+                      <button className="px-4 py-2 btn-secondary rounded-xl shadow-luxury hover-lift transition-all duration-300">
                         <Mic size={16} />
                       </button>
                     </div>

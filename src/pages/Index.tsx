@@ -176,7 +176,7 @@ const Index = () => {
       {/* ENHANCED HERO SECTION */}
       <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
         {/* 3D Butterfly Background - LARGER & HIGHER */}
-        <div className="absolute inset-0 w-full h-full" style={{ transform: 'scale(1.4) translateY(-15vh)', zIndex: 1 }}>
+        <div className="absolute inset-0 w-full h-full" style={{ transform: 'scale(1.6) translateY(-10vh)', zIndex: 1 }}>
           <ButterflyScene />
         </div>
         
@@ -185,20 +185,20 @@ const Index = () => {
 
         {/* Hero Content - LOGO AT BUTTERFLY CENTER */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8" style={{ zIndex: 3, transform: 'translateY(0vh)' }}>
-          <div className="p-8 sm:p-12 lg:p-16">
+          <div className="p-8 sm:p-12 lg:p-16 animate-fade-in-up">
             <div className="mb-8">
               <img
                 src="/IMG-20250305-WA0003-removebg-preview.png"
                 alt="RARITONE"
-                className="mx-auto w-full max-w-xs sm:max-w-2xl h-auto luxury-float"
+                className="mx-auto w-full max-w-xs sm:max-w-2xl h-auto luxury-float brand-logo"
                 style={{ 
-                  filter: 'drop-shadow(0 0 30px rgba(0, 64, 48, 0.6)) brightness(1.1)',
+                  filter: 'drop-shadow(0 0 40px rgba(0, 64, 48, 0.4)) brightness(1.15)',
                   textShadow: '0 0 15px rgba(0, 64, 48, 0.4)'
                 }}
               />
             </div>
 
-            <p className="hero-subtitle font-light mb-16 opacity-95" 
+            <p className="hero-subtitle font-light mb-16 opacity-95 animate-slide-in-right" 
                style={{ 
                  textShadow: '0 2px 8px rgba(0,0,0,0.3)',
                  filter: 'brightness(1.1)',
@@ -208,7 +208,7 @@ const Index = () => {
             </p>
 
             {/* EQUAL STYLED BUTTONS */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-16">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-16 animate-scale-in">
               <button
                 className="btn-primary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base shadow-luxury hover-lift"
                 onClick={() => navigate('/scan')}
@@ -227,15 +227,16 @@ const Index = () => {
             </div>
 
             {/* Notice Text with Better Visibility */}
-            <p className="max-w-md mx-auto leading-relaxed text-xs sm:text-sm px-4 opacity-80"
+            <p className="max-w-md mx-auto leading-relaxed text-xs sm:text-sm px-4 opacity-80 animate-fade-in-up"
                style={{ 
                  textShadow: '0 1px 4px rgba(0,0,0,0.3)',
-                 background: 'rgba(255,255,255,0.9)',
+                 background: 'rgba(255,255,255,0.95)',
                  padding: '8px 16px',
-                 borderRadius: '12px',
+                 borderRadius: '16px',
                  backdropFilter: 'blur(5px)',
                  color: 'var(--text-secondary)',
-                 border: '1px solid rgba(0, 64, 48, 0.2)'
+                 border: '2px solid rgba(0, 64, 48, 0.2)',
+                 boxShadow: '0 4px 15px rgba(0, 64, 48, 0.1)'
                }}>
               This site uses webcam access to enable AI-powered try-ons. Your camera data is never stored or shared.
             </p>
@@ -246,7 +247,7 @@ const Index = () => {
       {/* AI BODY SCAN BENEFITS SECTION */}
       <section className="py-12 sm:py-20 luxury-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
             <h2 className="hero-title mb-4 flex items-center justify-center">
               <Shield className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
               AI Body Scan Benefits
@@ -258,7 +259,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
             {/* 100% Private */}
-            <div className="feature-card card-3d hover-lift">
+            <div className="feature-card card-3d hover-lift animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
                 <Shield size={32} color="var(--primary-accent)" />
               </div>
@@ -269,7 +270,7 @@ const Index = () => {
             </div>
 
             {/* 99% Accurate */}
-            <div className="feature-card card-3d hover-lift">
+            <div className="feature-card card-3d hover-lift animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
                 <Zap size={32} color="var(--primary-accent)" />
               </div>
@@ -280,7 +281,7 @@ const Index = () => {
             </div>
 
             {/* 30 Second Scan */}
-            <div className="feature-card card-3d hover-lift">
+            <div className="feature-card card-3d hover-lift animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
                 <Clock size={32} color="var(--primary-accent)" />
               </div>
@@ -296,7 +297,7 @@ const Index = () => {
       {/* SHOP BY CATEGORY SECTION (ONLY 3 CATEGORIES) */}
       <section className="py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
             <h2 className="hero-title mb-4 flex items-center justify-center">
               <TrendingUp className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
               Shop by Category
@@ -307,10 +308,11 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto">
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <div
                 key={category.name}
-                className="group cursor-pointer card-3d"
+                className="group cursor-pointer card-3d animate-fade-in-up"
+                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                 onClick={() => handleCategoryClick(category.category)}
               >
                 <div className="category-card hover-lift">
@@ -318,9 +320,9 @@ const Index = () => {
                     <img
                       src={category.image}
                       alt={category.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary-accent)]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary-accent)]/70 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="font-medium text-white text-lg sm:text-xl font-['Playfair_Display'] mb-1">
                         {category.name}
@@ -340,7 +342,7 @@ const Index = () => {
       {/* CUSTOMER REVIEW SLIDER SECTION */}
       <section className="py-12 sm:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <div className="text-center">
+          <div className="text-center animate-fade-in-up">
             <h2 className="hero-title mb-4 flex items-center justify-center">
               <Star className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
               What Our Customers Say
@@ -356,7 +358,7 @@ const Index = () => {
             {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-80 luxury-card p-8 mx-4 hover-lift"
+                className="flex-shrink-0 w-80 testimonial-card mx-4"
               >
                 <div className="flex items-center mb-4">
                   <div className="w-14 h-14 rounded-full bg-[var(--primary-accent)] flex items-center justify-center text-white font-semibold mr-4 font-['Playfair_Display']">
@@ -381,7 +383,7 @@ const Index = () => {
       {/* FOOTER SECTION WITH SMOOTH SCROLL LINKS */}
       <footer id="footer" className="py-8 sm:py-16 section-divider border-t">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="luxury-card rounded-2xl p-8 sm:p-12 shadow-luxury">
+          <div className="luxury-footer rounded-2xl p-8 sm:p-12 shadow-luxury">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Brand Section */}
               <div className="lg:col-span-2" id="about">
@@ -394,6 +396,21 @@ const Index = () => {
                   Revolutionizing fashion with AI-powered body scanning technology. 
                   Experience perfect fit and personalized style recommendations across India.
                 </p>
+                
+                {/* Newsletter Signup */}
+                <div className="mt-8 newsletter-section max-w-md">
+                  <h4 className="font-semibold text-[var(--text-primary)] mb-3 font-['Playfair_Display']">Stay Updated</h4>
+                  <div className="flex space-x-2">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="flex-1 luxury-input text-sm"
+                    />
+                    <button className="btn-primary px-4 py-2 text-sm">
+                      Subscribe
+                    </button>
+                  </div>
+                </div>
               </div>
 
               {/* Quick Links */}
@@ -441,6 +458,7 @@ const Index = () => {
 
             {/* Privacy and Returns Sections */}
             <div className="section-divider border-t mt-8 sm:mt-12 pt-6 sm:pt-8">
+              <div className="elegant-divider"></div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div id="privacy">
                   <h3 className="font-semibold text-[var(--text-primary)] mb-4 font-['Playfair_Display'] text-lg">Privacy Policy</h3>
@@ -460,7 +478,7 @@ const Index = () => {
               
               <div className="text-center">
                 <p className="text-[var(--text-secondary)] text-xs sm:text-sm font-['Poppins']">
-                  © 2025 RARITONE. All rights reserved. | Powered by AI Fashion Technology | Made in India
+                  © 2025 THE RARITONE. All rights reserved. | Powered by AI Fashion Technology | Made in India with ❤️
                 </p>
               </div>
             </div>

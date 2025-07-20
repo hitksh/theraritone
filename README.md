@@ -1,26 +1,26 @@
-# RARITONE - AI-Powered Fashion Platform
+# THE RARITONE - Luxury AI-Powered Fashion Platform
 
 ## Project Overview
 
-RARITONE is India's premier AI-powered fashion platform that revolutionizes the way people shop for clothing. Our innovative body scanning technology ensures perfect-fit fashion for every customer.
+THE RARITONE is India's premier luxury AI-powered fashion platform that revolutionizes the way people shop for designer clothing. Our innovative body scanning technology ensures perfect-fit luxury fashion for every customer.
 
 ## Features
 
-- **AI Body Scanning**: Advanced computer vision technology for accurate body measurements
-- **Perfect Fit Recommendations**: AI-powered size recommendations based on your unique measurements
-- **Premium Fashion Collection**: Curated selection of high-quality fashion items
-- **Virtual Try-On**: Experience how clothes look on you before purchasing
-- **Personalized Shopping**: AI-driven style recommendations based on your preferences
-- **Seamless Shopping Experience**: Modern, responsive web interface with smooth animations
+- **Advanced AI Body Scanning**: Cutting-edge computer vision technology for precise body measurements
+- **Perfect Fit Recommendations**: AI-powered luxury sizing recommendations based on your unique measurements
+- **Curated Luxury Collection**: Handpicked selection of premium designer fashion items
+- **3D Virtual Try-On**: Experience how luxury pieces look on you before purchasing
+- **Personalized Luxury Shopping**: AI-driven style recommendations based on your preferences
+- **Premium Shopping Experience**: Elegant, responsive web interface with smooth 3D animations and luxury aesthetics
 
 ## Technology Stack
 
 This project is built with modern web technologies:
 
 - **Frontend**: React 18 with TypeScript
-- **Styling**: Tailwind CSS with custom design system
+- **Styling**: Tailwind CSS with luxury design system (Playfair Display + Inter fonts)
 - **UI Components**: Radix UI primitives with shadcn/ui
-- **Animations**: Framer Motion for smooth interactions
+- **Animations**: Framer Motion for smooth 3D interactions and luxury transitions
 - **Backend**: Firebase for authentication and data storage
 - **Build Tool**: Vite for fast development and optimized builds
 - **State Management**: React Context API
@@ -38,7 +38,7 @@ This project is built with modern web technologies:
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd raritone-fashion-platform
+cd theraritone-fashion-platform
 ```
 
 2. Install dependencies:
@@ -115,11 +115,12 @@ src/
 
 ## Design System
 
-RARITONE uses a custom design system with:
-- **Primary Colors**: Custom green palette (#697565, #3C3D37, #181C14, #ECDFCC)
-- **Typography**: Inter and Poppins font families
+THE RARITONE uses a luxury design system with:
+- **Primary Colors**: Warm beige and olive green palette (#F5EEDD, #FFF9E5, #DCD0A8, #004030)
+- **Typography**: Playfair Display for headings, Inter for body text
 - **Spacing**: 8px grid system
-- **Components**: Consistent design patterns across all UI elements
+- **Components**: Consistent luxury design patterns with 3D hover effects and premium shadows
+- **Animations**: Smooth 3D transforms and elegant transitions
 
 ## Contributing
 
@@ -131,15 +132,15 @@ RARITONE uses a custom design system with:
 
 ## License
 
-This project is proprietary software owned by RARITONE Fashion Technologies Pvt. Ltd.
+This project is proprietary software owned by THE RARITONE Fashion Technologies Pvt. Ltd.
 
 ## Contact
 
-- **Website**: [raritone.in](https://raritone.in)
-- **Email**: hello@raritone.in
-- **Support**: support@raritone.in
+- **Website**: [theraritone.in](https://theraritone.in)
+- **Email**: hello@theraritone.in
+- **Support**: support@theraritone.in
 - **Phone**: +91 98765 43210
 
 ---
 
-© 2025 RARITONE Fashion Technologies Pvt. Ltd. All rights reserved.
+© 2025 THE RARITONE Fashion Technologies Pvt. Ltd. All rights reserved.
