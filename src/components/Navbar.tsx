@@ -38,13 +38,13 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // IMMEDIATE NAVBAR VISIBILITY - NO DELAY
+  // Navbar visibility on scroll
   useEffect(() => {
     if (!isHomepage) return;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsVisible(currentScrollY > 50); // Show immediately after hero
+      setIsVisible(currentScrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -130,9 +130,9 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
 
   return (
     <>
-      {/* LUXURY NAVBAR */}
+      {/* FUTURISTIC TECH NAVBAR */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-500 luxury-navbar ${
+        className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-500 tech-navbar ${
           isHomepage ? (isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0') : 'translate-y-0 opacity-100'
         }`}
         data-menu-container
@@ -144,37 +144,37 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
               {showBackButton ? (
                 <button
                   onClick={handleBackClick}
-                  className="flex items-center space-x-3 px-6 py-3 text-[var(--text-primary)] hover:text-[var(--primary-accent)] transition-all duration-300 rounded-xl hover:bg-white/10 min-h-[48px]"
+                  className="flex items-center space-x-3 px-6 py-3 text-[#333333] hover:text-[#014737] transition-all duration-300 rounded-2xl hover:bg-white/50 min-h-[48px]"
                 >
-                  <ArrowLeft size={22} className="text-[var(--primary-accent)]" />
-                  {!isMobile && <span className="text-sm font-medium text-[var(--text-primary)] font-['Poppins']">Back</span>}
+                  <ArrowLeft size={22} className="text-[#014737]" />
+                  {!isMobile && <span className="text-sm font-medium text-[#333333] font-['Urbanist']">Back</span>}
                 </button>
               ) : (
                 <button
                   onClick={handleMenuClick}
-                  className="flex items-center space-x-3 px-6 py-3 text-[var(--text-primary)] hover:text-[var(--primary-accent)] transition-all duration-300 rounded-xl hover:bg-white/10 relative min-h-[48px]"
+                  className="flex items-center space-x-3 px-6 py-3 text-[#333333] hover:text-[#014737] transition-all duration-300 rounded-2xl hover:bg-white/50 relative min-h-[48px]"
                 >
-                  {/* Hamburger to Cross */}
+                  {/* Hamburger to Cross Animation */}
                   <div className="relative w-6 h-6 flex flex-col justify-center items-center">
                     <span
-                      className={`absolute w-5 h-0.5 bg-[var(--primary-accent)] rounded-full transition-all duration-300 ${
+                      className={`absolute w-5 h-0.5 bg-[#014737] rounded-full transition-all duration-300 ${
                         isMenuOpen ? 'rotate-45' : '-translate-y-1'
                       }`}
                     />
                     <span
-                      className={`absolute w-5 h-0.5 bg-[var(--primary-accent)] rounded-full transition-all duration-300 ${
+                      className={`absolute w-5 h-0.5 bg-[#014737] rounded-full transition-all duration-300 ${
                         isMenuOpen ? 'opacity-0' : 'opacity-100'
                       }`}
                     />
                     <span
-                      className={`absolute w-5 h-0.5 bg-[var(--primary-accent)] rounded-full transition-all duration-300 ${
+                      className={`absolute w-5 h-0.5 bg-[#014737] rounded-full transition-all duration-300 ${
                         isMenuOpen ? '-rotate-45' : 'translate-y-1'
                       }`}
                     />
                   </div>
                   
                   {!isMobile && (
-                    <span className="text-sm font-medium text-[var(--text-primary)] font-['Poppins']">
+                    <span className="text-sm font-medium text-[#333333] font-['Urbanist']">
                       {isMenuOpen ? 'Close' : 'Menu'}
                     </span>
                   )}
@@ -182,34 +182,22 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
               )}
             </div>
 
-            {/* Center - Logo or Page Title with Morph Effect */}
+            {/* Center - Logo or Page Title */}
             <div className="flex-1 flex justify-center items-center relative">
               {pageTitle ? (
                 <div
                   className="relative cursor-pointer flex items-center justify-center h-20 w-full max-w-md"
                   onClick={handleTitleClick}
                 >
-                  <h1 className="navbar-title font-medium text-[var(--text-primary)] text-xl sm:text-2xl font-['Playfair_Display']">
+                  <h1 className="font-medium text-[#333333] text-xl sm:text-2xl font-['Urbanist'] transition-all duration-300 hover:text-[#014737]">
                     {pageTitle}
                   </h1>
-                  <img
-                    src="/IMG-20250305-WA0003-removebg-preview.png"
-                    alt="RARITONE"
-                    className="navbar-logo luxury-float brand-logo"
-                    style={{
-                      height: isMobile ? '56px' : '72px',
-                      width: 'auto',
-                      maxWidth: isMobile ? '240px' : '360px',
-                      objectFit: 'contain',
-                      transform: 'translate(-50%, -50%)'
-                    }}
-                  />
                 </div>
               ) : (
                 <img
                   src="/IMG-20250305-WA0003-removebg-preview.png"
                   alt="RARITONE"
-                  className="cursor-pointer transition-all duration-300 luxury-float brand-logo"
+                  className="cursor-pointer transition-all duration-300 brand-logo"
                   onClick={() => navigate('/')}
                   style={{
                     height: isMobile ? '56px' : '72px',
@@ -225,18 +213,18 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
             <div className="flex items-center space-x-2 sm:space-x-3 w-32 sm:w-40 justify-end">
               <button
                 onClick={onSearchOpen}
-                className="text-[var(--primary-accent)] hover:text-[var(--text-primary)] transition-all duration-300 p-3 rounded-xl hover:bg-white/10 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+                className="text-[#014737] hover:text-[#333333] transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
               >
                 <Search size={22} />
               </button>
               
               <button 
                 onClick={() => navigate('/wishlist')}
-                className="relative text-[var(--primary-accent)] hover:text-[var(--text-primary)] transition-all duration-300 p-3 rounded-xl hover:bg-white/10 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+                className="relative text-[#014737] hover:text-[#333333] transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
               >
                 <Heart size={22} />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[var(--error-color)] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  <span className="absolute -top-1 -right-1 bg-[#014737] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
                     {wishlistCount}
                   </span>
                 )}
@@ -244,11 +232,11 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
 
               <button
                 onClick={() => navigate('/cart')}
-                className="relative text-[var(--primary-accent)] hover:text-[var(--text-primary)] transition-all duration-300 p-3 rounded-xl hover:bg-white/10 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+                className="relative text-[#014737] hover:text-[#333333] transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
               >
                 <ShoppingBag size={22} />
                 {cartItemsCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[var(--primary-accent)] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  <span className="absolute -top-1 -right-1 bg-[#014737] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
                     {cartItemsCount}
                   </span>
                 )}
@@ -256,7 +244,7 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
               
               <button 
                 onClick={handleProfileClick}
-                className="text-[var(--primary-accent)] hover:text-[var(--text-primary)] transition-all duration-300 p-3 rounded-xl hover:bg-white/10 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+                className="text-[#014737] hover:text-[#333333] transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
               >
                 <User size={22} />
               </button>
@@ -264,9 +252,9 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
           </div>
         </div>
 
-        {/* Menu Dropdown */}
+        {/* Glass Dropdown Menu */}
         {isMenuOpen && (
-          <div className="overflow-hidden luxury-card border-t-0 rounded-t-none shadow-luxury animate-fade-in-up">
+          <div className="glass-dropdown mt-2 mx-6 animate-fade-in-up">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-6 sm:py-8">
               <div className="flex justify-center gap-6 sm:gap-12 flex-wrap">
                 {menuItems.map((item, index) => (
@@ -276,13 +264,13 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
                         navigate(item.path);
                         setIsMenuOpen(false);
                       }}
-                      className="w-full text-center text-[var(--text-primary)] hover:text-[var(--primary-accent)] transition-all duration-300 flex flex-col items-center px-4 py-6 sm:px-6 sm:py-8 space-y-3 sm:space-y-4 rounded-xl hover:bg-[var(--primary-accent)] hover:bg-opacity-10 hover:scale-105 hover-lift animate-slide-in-right"
+                      className="text-center text-[#333333] hover:text-[#014737] transition-all duration-300 flex flex-col items-center px-4 py-6 sm:px-6 sm:py-8 space-y-3 sm:space-y-4 rounded-2xl hover:bg-white/30 hover:scale-105 hover-lift animate-slide-in-right"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center shadow-luxury">
-                        <div className="w-6 h-6 bg-[var(--primary-accent)] rounded-sm"></div>
+                      <div className="w-12 h-12 rounded-2xl bg-[#c6dac6] flex items-center justify-center">
+                        <div className="w-6 h-6 bg-[#014737] rounded-lg"></div>
                       </div>
-                      <span className="font-medium text-sm sm:text-base text-[var(--text-primary)] font-['Inter']">{item.label}</span>
+                      <span className="font-medium text-sm sm:text-base text-[#333333] font-['Urbanist']">{item.label}</span>
                     </button>
                   </div>
                 ))}
@@ -296,18 +284,18 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
       {isProfileOpen && user && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
             onClick={() => setIsProfileOpen(false)}
           />
-          <div className="fixed right-0 top-0 h-full z-50 w-full max-w-md luxury-card rounded-l-2xl transition-none shadow-luxury animate-slide-in-right">
+          <div className="fixed right-0 top-0 h-full z-50 w-full max-w-md tech-card rounded-l-2xl transition-none animate-slide-in-right">
             <div className="p-6 sm:p-8 h-full flex flex-col">
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-xl sm:text-2xl font-medium text-[var(--text-primary)] font-['Playfair_Display']">
+                <h2 className="text-xl sm:text-2xl font-medium text-[#333333] font-['Urbanist']">
                   Profile
                 </h2>
                 <button
                   onClick={() => setIsProfileOpen(false)}
-                  className="text-[var(--text-primary)] hover:text-[var(--primary-accent)] transition-all duration-300 p-3 rounded-xl hover:bg-[var(--primary-accent)] hover:bg-opacity-10 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+                  className="text-[#333333] hover:text-[#014737] transition-all duration-300 p-3 rounded-2xl hover:bg-[#c6dac6]/20 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
                 >
                   <X size={24} />
                 </button>
@@ -315,18 +303,18 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
 
               <div className="mb-8">
                 <div className="flex items-center space-x-3 sm:space-x-4 mb-6">
-                  <div className="luxury-card rounded-full flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 shadow-luxury brand-logo">
+                  <div className="tech-card rounded-full flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 brand-logo">
                     {user?.photoURL ? (
                       <img src={user.photoURL} alt="Profile" className="w-full h-full rounded-full object-cover" />
                     ) : (
-                      <User size={24} className="text-[var(--primary-accent)]" />
+                      <User size={24} className="text-[#014737]" />
                     )}
                   </div>
                   <div>
-                    <h3 className="font-medium text-[var(--text-primary)] text-lg sm:text-xl font-['Playfair_Display']">
+                    <h3 className="font-medium text-[#333333] text-lg sm:text-xl font-['Urbanist']">
                       {user.displayName || 'User'}
                     </h3>
-                    <p className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
+                    <p className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
                       {user.email}
                     </p>
                   </div>
@@ -345,7 +333,7 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
                       navigate(action.path);
                       setIsProfileOpen(false);
                     }}
-                    className="w-full text-left text-[var(--text-primary)] luxury-card rounded-xl transition-all duration-300 hover:bg-[var(--primary-accent)] hover:bg-opacity-10 hover:scale-102 px-4 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-['Inter'] hover-lift animate-fade-in-up"
+                    className="w-full text-left text-[#333333] tech-card rounded-2xl transition-all duration-300 hover:bg-[#c6dac6]/20 hover:scale-102 px-4 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-['Urbanist'] hover-lift animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {action.label}
@@ -357,7 +345,7 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
                     logout();
                     setIsProfileOpen(false);
                   }}
-                  className="w-full text-left text-[var(--error-color)] hover:bg-red-50 border-2 border-[var(--error-color)] rounded-xl transition-all duration-300 hover:scale-102 px-4 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-['Inter'] hover-lift animate-fade-in-up"
+                  className="w-full text-left text-red-600 hover:bg-red-50 border-2 border-red-600 rounded-2xl transition-all duration-300 hover:scale-102 px-4 py-3 sm:px-5 sm:py-4 text-sm sm:text-base font-['Urbanist'] hover-lift animate-fade-in-up"
                   style={{ animationDelay: '0.4s' }}
                 >
                   Logout

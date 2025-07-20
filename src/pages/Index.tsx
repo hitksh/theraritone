@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Camera, ShoppingBag, Shield, Zap, Clock, Star, TrendingUp, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Camera, ShoppingBag, Shield, Zap, Clock, Star, TrendingUp, Mail, Phone, MapPin, Heart, Sparkles, Cpu, Eye } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import SearchOverlay from '@/components/SearchOverlay';
 import ChatWidget from '@/components/ChatWidget';
@@ -44,7 +44,7 @@ const Index = () => {
     }
   }, []);
 
-  // Categories (only 3 as requested)
+  // Categories (3 main categories)
   const categories = [
     { 
       name: "T-Shirts", 
@@ -63,6 +63,30 @@ const Index = () => {
       image: "Raritone Collection/Kiss me again.jpeg", 
       count: "12 Items", 
       category: "Premium" 
+    }
+  ];
+
+  // Tech Features
+  const techFeatures = [
+    {
+      icon: <Cpu className="w-8 h-8 text-[#014737]" />,
+      title: "AI-Powered Fit",
+      description: "Advanced algorithms analyze your body measurements for perfect sizing recommendations."
+    },
+    {
+      icon: <Eye className="w-8 h-8 text-[#014737]" />,
+      title: "3D Try-On",
+      description: "Visualize how clothes look on you with our cutting-edge virtual fitting technology."
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-[#014737]" />,
+      title: "Privacy First",
+      description: "Your body data is processed locally and never stored on our servers."
+    },
+    {
+      icon: <Sparkles className="w-8 h-8 text-[#014737]" />,
+      title: "Made in India",
+      description: "Proudly crafted with premium materials and traditional Indian craftsmanship."
     }
   ];
 
@@ -166,51 +190,47 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#f7f3e9' }}>
       {/* Navigation */}
       <Navbar 
         onSearchOpen={() => setIsSearchOpen(true)}
         onCartOpen={() => {}}
       />
 
-      {/* ENHANCED HERO SECTION */}
+      {/* ENHANCED HERO SECTION WITH PROMINENT BUTTERFLY WINGS */}
       <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
-        {/* 3D Butterfly Background - LARGER & HIGHER */}
-        <div className="absolute inset-0 w-full h-full" style={{ transform: 'scale(1.6) translateY(-10vh)', zIndex: 1 }}>
+        {/* Enhanced Butterfly Background - More Visible */}
+        <div className="absolute inset-0 w-full h-full" style={{ transform: 'scale(1.4)', zIndex: 1 }}>
           <ButterflyScene />
         </div>
         
-        {/* Subtle overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30" style={{ zIndex: 2 }} />
+        {/* Wing overlay for better visibility */}
+        <div className="absolute inset-0 wing-overlay" style={{ zIndex: 2 }} />
 
-        {/* Hero Content - LOGO AT BUTTERFLY CENTER */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8" style={{ zIndex: 3, transform: 'translateY(0vh)' }}>
+        {/* Hero Content */}
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8" style={{ zIndex: 3 }}>
           <div className="p-8 sm:p-12 lg:p-16 animate-fade-in-up">
+            {/* Logo */}
             <div className="mb-8">
               <img
                 src="/IMG-20250305-WA0003-removebg-preview.png"
                 alt="RARITONE"
-                className="mx-auto w-full max-w-xs sm:max-w-2xl h-auto luxury-float brand-logo"
+                className="mx-auto w-full max-w-xs sm:max-w-2xl h-auto gentle-float brand-logo"
                 style={{ 
-                  filter: 'drop-shadow(0 0 40px rgba(0, 64, 48, 0.4)) brightness(1.15)',
-                  textShadow: '0 0 15px rgba(0, 64, 48, 0.4)'
+                  filter: 'drop-shadow(0 0 30px rgba(1, 71, 55, 0.3))',
                 }}
               />
             </div>
 
-            <p className="hero-subtitle font-light mb-16 opacity-95 animate-slide-in-right" 
-               style={{ 
-                 textShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                 filter: 'brightness(1.1)',
-                 color: 'var(--text-secondary)'
-               }}>
+            {/* Tagline */}
+            <p className="hero-subtitle font-light mb-16 opacity-95 animate-slide-in-right">
               Fashion Meets Technology
             </p>
 
-            {/* EQUAL STYLED BUTTONS */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-16 animate-scale-in">
               <button
-                className="btn-primary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base shadow-luxury hover-lift"
+                className="btn-primary font-medium flex items-center space-x-3 justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base hover-lift"
                 onClick={() => navigate('/scan')}
               >
                 <Camera size={isMobile ? 18 : 20} />
@@ -218,7 +238,7 @@ const Index = () => {
               </button>
               
               <button
-                className="btn-secondary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base shadow-luxury hover-lift"
+                className="btn-secondary font-medium flex items-center space-x-3 justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base hover-lift"
                 onClick={() => navigate('/catalog')}
               >
                 <ShoppingBag size={isMobile ? 18 : 20} />
@@ -226,84 +246,61 @@ const Index = () => {
               </button>
             </div>
 
-            {/* Notice Text with Better Visibility */}
-            <p className="max-w-md mx-auto leading-relaxed text-xs sm:text-sm px-4 opacity-80 animate-fade-in-up"
-               style={{ 
-                 textShadow: '0 1px 4px rgba(0,0,0,0.3)',
-                 background: 'rgba(255,255,255,0.95)',
-                 padding: '8px 16px',
-                 borderRadius: '16px',
-                 backdropFilter: 'blur(5px)',
-                 color: 'var(--text-secondary)',
-                 border: '2px solid rgba(0, 64, 48, 0.2)',
-                 boxShadow: '0 4px 15px rgba(0, 64, 48, 0.1)'
-               }}>
-              This site uses webcam access to enable AI-powered try-ons. Your camera data is never stored or shared.
-            </p>
+            {/* Privacy Notice */}
+            <div className="max-w-md mx-auto animate-fade-in-up">
+              <div className="tech-card p-4 text-center">
+                <p className="text-xs sm:text-sm text-[#888888] leading-relaxed">
+                  This site uses webcam access to enable AI-powered try-ons. Your camera data is never stored or shared.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* AI BODY SCAN BENEFITS SECTION */}
-      <section className="py-12 sm:py-20 luxury-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
-              <Shield className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
-              AI Body Scan Benefits
-            </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
-              Revolutionary technology that ensures perfect fit every time with complete privacy and precision.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-            {/* 100% Private */}
-            <div className="feature-card card-3d hover-lift animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
-                <Shield size={32} color="var(--primary-accent)" />
-              </div>
-              <h3 className="feature-title">100% Private</h3>
-              <p className="feature-description">
-                Body data never stored or sent online. All processing happens locally on your device for complete privacy.
-              </p>
-            </div>
-
-            {/* 99% Accurate */}
-            <div className="feature-card card-3d hover-lift animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
-                <Zap size={32} color="var(--primary-accent)" />
-              </div>
-              <h3 className="feature-title">99% Accurate</h3>
-              <p className="feature-description">
-                AI scanning ensures near-perfect micro-fit. Our technology provides the most accurate measurements possible.
-              </p>
-            </div>
-
-            {/* 30 Second Scan */}
-            <div className="feature-card card-3d hover-lift animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
-                <Clock size={32} color="var(--primary-accent)" />
-              </div>
-              <h3 className="feature-title">30 Second Scan</h3>
-              <p className="feature-description">
-                Fast scan with only a smartphone camera. Get your perfect measurements in half a minute.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SHOP BY CATEGORY SECTION (ONLY 3 CATEGORIES) */}
+      {/* TECH FEATURES SECTION */}
       <section className="py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
             <h2 className="hero-title mb-4 flex items-center justify-center">
-              <TrendingUp className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
+              <Zap className="mr-4" size={isMobile ? 28 : 36} color="#014737" />
+              Revolutionary Technology
+            </h2>
+            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+              Experience the future of fashion with our cutting-edge AI technology and precision fitting.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {techFeatures.map((feature, index) => (
+              <div
+                key={feature.title}
+                className="feature-card hover-lift animate-fade-in-up"
+                style={{ animationDelay: `${0.1 * (index + 1)}s` }}
+              >
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#c6dac6] bg-opacity-30 flex items-center justify-center">
+                  {feature.icon}
+                </div>
+                <h3 className="feature-title">{feature.title}</h3>
+                <p className="feature-description">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SHOP BY CATEGORY SECTION */}
+      <section className="py-12 sm:py-20" style={{ backgroundColor: '#f9f6f0' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
+            <h2 className="hero-title mb-4 flex items-center justify-center">
+              <TrendingUp className="mr-4" size={isMobile ? 28 : 36} color="#014737" />
               Shop by Category
             </h2>
             <p className="hero-subtitle max-w-2xl mx-auto px-4">
-              Explore our curated collection of premium fashion categories.
+              Discover our curated collection of premium fashion categories.
             </p>
           </div>
 
@@ -311,7 +308,7 @@ const Index = () => {
             {categories.map((category, index) => (
               <div
                 key={category.name}
-                className="group cursor-pointer card-3d animate-fade-in-up"
+                className="group cursor-pointer animate-fade-in-up"
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                 onClick={() => handleCategoryClick(category.category)}
               >
@@ -320,14 +317,14 @@ const Index = () => {
                     <img
                       src={category.image}
                       alt={category.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary-accent)]/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#014737]/70 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="font-medium text-white text-lg sm:text-xl font-['Playfair_Display'] mb-1">
+                      <h3 className="font-medium text-white text-lg sm:text-xl font-['Urbanist'] mb-1">
                         {category.name}
                       </h3>
-                      <p className="text-white/80 text-sm font-['Poppins']">
+                      <p className="text-white/80 text-sm font-['Urbanist']">
                         {category.count}
                       </p>
                     </div>
@@ -344,7 +341,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <div className="text-center animate-fade-in-up">
             <h2 className="hero-title mb-4 flex items-center justify-center">
-              <Star className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
+              <Star className="mr-4" size={isMobile ? 28 : 36} color="#014737" />
               What Our Customers Say
             </h2>
             <p className="hero-subtitle max-w-2xl mx-auto px-4">
@@ -361,127 +358,124 @@ const Index = () => {
                 className="flex-shrink-0 w-80 testimonial-card mx-4"
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-14 h-14 rounded-full bg-[var(--primary-accent)] flex items-center justify-center text-white font-semibold mr-4 font-['Playfair_Display']">
+                  <div className="w-14 h-14 rounded-full bg-[#014737] flex items-center justify-center text-white font-semibold mr-4 font-['Urbanist']">
                     {review.avatar}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[var(--text-primary)] font-['Playfair_Display']">{review.name}</h4>
+                    <h4 className="font-semibold text-[#333333] font-['Urbanist']">{review.name}</h4>
                     <div className="flex">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} size={16} fill="var(--primary-accent)" color="var(--primary-accent)" />
+                        <Star key={i} size={16} fill="#014737" color="#014737" />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="text-[var(--text-secondary)] italic font-['Poppins'] leading-relaxed">"{review.comment}"</p>
+                <p className="text-[#888888] italic font-['Urbanist'] leading-relaxed">"{review.comment}"</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FOOTER SECTION WITH SMOOTH SCROLL LINKS */}
-      <footer id="footer" className="py-8 sm:py-16 section-divider border-t">
+      {/* FOOTER SECTION */}
+      <footer className="tech-footer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="luxury-footer rounded-2xl p-8 sm:p-12 shadow-luxury">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Brand Section */}
-              <div className="lg:col-span-2" id="about">
-                <img
-                  src="/IMG-20250305-WA0003-removebg-preview.png"
-                  alt="RARITONE"
-                  className="h-20 sm:h-24 w-auto mb-6"
-                />
-                <p className="text-[var(--text-secondary)] max-w-md leading-relaxed text-sm sm:text-base font-['Poppins']">
-                  Revolutionizing fashion with AI-powered body scanning technology. 
-                  Experience perfect fit and personalized style recommendations across India.
-                </p>
-                
-                {/* Newsletter Signup */}
-                <div className="mt-8 newsletter-section max-w-md">
-                  <h4 className="font-semibold text-[var(--text-primary)] mb-3 font-['Playfair_Display']">Stay Updated</h4>
-                  <div className="flex space-x-2">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 luxury-input text-sm"
-                    />
-                    <button className="btn-primary px-4 py-2 text-sm">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Links */}
-              <div>
-                <h3 className="font-semibold text-[var(--text-primary)] mb-6 text-lg sm:text-xl font-['Playfair_Display']">Quick Links</h3>
-                <ul className="space-y-2">
-                  <li><a href="#about" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">About Us</a></li>
-                  <li><a href="#privacy" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">Privacy Policy</a></li>
-                  <li><a href="#returns" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">Returns & Exchanges</a></li>
-                  <li><a href="#contact" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">Contact Us</a></li>
-                </ul>
-              </div>
-
-              {/* Contact Info */}
-              <div id="contact">
-                <h3 className="font-semibold text-[var(--text-primary)] mb-6 text-lg sm:text-xl font-['Playfair_Display']">Contact</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
-                      <Mail size={16} className="text-[var(--primary-accent)]" />
-                    </div>
-                    <span className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
-                      hello@raritone.in
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
-                      <Phone size={16} className="text-[var(--primary-accent)]" />
-                    </div>
-                    <span className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
-                      +91 98765 43210
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
-                      <MapPin size={16} className="text-[var(--primary-accent)]" />
-                    </div>
-                    <span className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
-                      Mumbai, India
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Privacy and Returns Sections */}
-            <div className="section-divider border-t mt-8 sm:mt-12 pt-6 sm:pt-8">
-              <div className="elegant-divider"></div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div id="privacy">
-                  <h3 className="font-semibold text-[var(--text-primary)] mb-4 font-['Playfair_Display'] text-lg">Privacy Policy</h3>
-                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed font-['Poppins']">
-                    Your privacy is our priority. We use advanced encryption and never store your body scan data. 
-                    All measurements are processed locally on your device for complete security.
-                  </p>
-                </div>
-                <div id="returns">
-                  <h3 className="font-semibold text-[var(--text-primary)] mb-4 font-['Playfair_Display'] text-lg">Returns & Exchanges</h3>
-                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed font-['Poppins']">
-                    30-day hassle-free returns. Free size exchanges. If our AI recommendation doesn't fit perfectly, 
-                    we'll make it right with no questions asked.
-                  </p>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Brand Section */}
+            <div className="lg:col-span-2">
+              <img
+                src="/IMG-20250305-WA0003-removebg-preview.png"
+                alt="RARITONE"
+                className="h-16 sm:h-20 w-auto mb-6"
+              />
+              <p className="text-[#888888] max-w-md leading-relaxed text-sm sm:text-base font-['Urbanist'] mb-6">
+                Revolutionizing fashion with AI-powered body scanning technology. 
+                Experience perfect fit and personalized style recommendations across India.
+              </p>
               
-              <div className="text-center">
-                <p className="text-[var(--text-secondary)] text-xs sm:text-sm font-['Poppins']">
-                  © 2025 THE RARITONE. All rights reserved. | Powered by AI Fashion Technology | Made in India with ❤️
-                </p>
+              {/* Newsletter Signup */}
+              <div className="newsletter-section max-w-md">
+                <h4 className="font-semibold text-[#333333] mb-3 font-['Urbanist']">Stay Updated</h4>
+                <div className="flex space-x-2">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 tech-input text-sm"
+                  />
+                  <button className="btn-primary px-4 py-2 text-sm">
+                    Subscribe
+                  </button>
+                </div>
               </div>
             </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="font-semibold text-[#333333] mb-6 text-lg font-['Urbanist']">Quick Links</h3>
+              <ul className="space-y-3">
+                <li><a href="/about" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">About Us</a></li>
+                <li><a href="/contact" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Contact</a></li>
+                <li><a href="/faqs" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">FAQ</a></li>
+                <li><a href="/quick-links" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Privacy Policy</a></li>
+                <li><a href="/returns" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Returns & Exchanges</a></li>
+                <li><a href="/terms" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Terms & Conditions</a></li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="font-semibold text-[#333333] mb-6 text-lg font-['Urbanist']">Contact</h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 rounded-full bg-[#c6dac6] flex items-center justify-center">
+                    <Mail size={16} className="text-[#014737]" />
+                  </div>
+                  <span className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
+                    hello@raritone.in
+                  </span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 rounded-full bg-[#c6dac6] flex items-center justify-center">
+                    <Phone size={16} className="text-[#014737]" />
+                  </div>
+                  <span className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
+                    +91 98765 43210
+                  </span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 rounded-full bg-[#c6dac6] flex items-center justify-center">
+                    <MapPin size={16} className="text-[#014737]" />
+                  </div>
+                  <span className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
+                    Mumbai, India
+                  </span>
+                </div>
+              </div>
+
+              {/* Social Icons */}
+              <div className="mt-6">
+                <h4 className="font-semibold text-[#333333] mb-3 font-['Urbanist']">Follow Us</h4>
+                <div className="flex space-x-3">
+                  <a href="#" className="w-10 h-10 rounded-full bg-[#c6dac6] flex items-center justify-center hover:bg-[#014737] hover:text-white transition-all duration-300">
+                    <span className="text-sm font-bold">IG</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-[#c6dac6] flex items-center justify-center hover:bg-[#014737] hover:text-white transition-all duration-300">
+                    <span className="text-sm font-bold">X</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-[#c6dac6] flex items-center justify-center hover:bg-[#014737] hover:text-white transition-all duration-300">
+                    <span className="text-sm font-bold">LI</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="elegant-divider"></div>
+          
+          <div className="text-center">
+            <p className="text-[#888888] text-xs sm:text-sm font-['Urbanist']">
+              © 2025 RARITONE. All rights reserved. | Powered by AI Fashion Technology | Made in India with ❤️
+            </p>
           </div>
         </div>
       </footer>

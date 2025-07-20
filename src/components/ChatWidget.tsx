@@ -16,7 +16,7 @@ const ChatWidget: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
 
-  const welcomeMessage = "Hi there! How can I assist you today in finding the perfect fit?";
+  const welcomeMessage = "Hi there! How can we help you today?";
 
   useEffect(() => {
     if (user && isOpen) {
@@ -108,13 +108,13 @@ const ChatWidget: React.FC = () => {
 
   return (
     <>
-      {/* LUXURY CHAT BUTTON */}
+      {/* FUTURISTIC CHAT BUTTON */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-8 right-8 z-40 px-8 py-4 rounded-full transition-all duration-500 luxury-chat flex items-center space-x-4 shadow-luxury hover-lift hover:scale-105 animate-scale-in"
+        className="fixed bottom-8 right-8 z-40 px-8 py-4 rounded-full transition-all duration-500 chat-widget flex items-center space-x-4 hover-lift hover:scale-105 animate-scale-in"
       >
-        {/* Logo container */}
-        <div className="w-10 h-10 relative rounded-full overflow-hidden flex items-center justify-center border-2 border-[var(--border-color)] brand-logo">
+        {/* R Logo container */}
+        <div className="w-10 h-10 relative rounded-full overflow-hidden flex items-center justify-center border-2 border-[#014737] brand-logo">
           <img
             src="/R.png"
             alt="RARITONE Chat"
@@ -125,18 +125,18 @@ const ChatWidget: React.FC = () => {
             }}
           />
         </div>
-        <span className="font-medium text-[var(--text-primary)] font-['Inter']">
+        <span className="font-medium text-[#333333] font-['Urbanist']">
           Chat with us
         </span>
       </button>
 
-      {/* LUXURY CHAT MODAL */}
+      {/* FUTURISTIC CHAT MODAL */}
       {isOpen && (
-        <div className="fixed bottom-28 right-8 z-50 w-96 rounded-2xl overflow-hidden luxury-chat transition-all duration-500 shadow-luxury animate-slide-in-right">
+        <div className="fixed bottom-28 right-8 z-50 w-96 rounded-2xl overflow-hidden chat-widget transition-all duration-500 animate-slide-in-right">
           {/* Header */}
-          <div className="text-[var(--text-primary)] p-6 flex items-center justify-between border-b-2 border-[var(--border-color)]">
+          <div className="text-[#333333] p-6 flex items-center justify-between border-b border-[#014737]/10">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[var(--border-color)] brand-logo">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[#014737] brand-logo">
                 <img
                   src="/R.png"
                   alt="RARITONE"
@@ -147,13 +147,13 @@ const ChatWidget: React.FC = () => {
                   }}
                 />
               </div>
-              <span className="font-medium font-['Inter']">Chat with a client advisor</span>
+              <span className="font-medium font-['Urbanist']">Chat with a client advisor</span>
             </div>
             
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
-                className="p-2 hover:bg-[var(--primary-accent)] hover:bg-opacity-10 rounded-lg transition-all duration-300"
+                className="p-2 hover:bg-[#c6dac6]/20 rounded-lg transition-all duration-300"
               >
                 <ChevronDown 
                   size={16} 
@@ -162,7 +162,7 @@ const ChatWidget: React.FC = () => {
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-[var(--primary-accent)] hover:bg-opacity-10 rounded-lg transition-all duration-300"
+                className="p-2 hover:bg-[#c6dac6]/20 rounded-lg transition-all duration-300"
               >
                 <X size={16} />
               </button>
@@ -173,27 +173,27 @@ const ChatWidget: React.FC = () => {
             <div>
               {/* Guest Email Form */}
               {showEmailForm && !user && (
-                <div className="p-6 border-b-2 border-[var(--border-color)]">
-                  <h4 className="font-medium mb-3 text-[var(--text-primary)] font-['Playfair_Display'] text-lg">Privacy Notice</h4>
+                <div className="p-6 border-b border-[#014737]/10">
+                  <h4 className="font-medium mb-3 text-[#333333] font-['Urbanist'] text-lg">Privacy Notice</h4>
                   <form onSubmit={handleGuestEmailSubmit} className="space-y-3">
                     <input
                       type="email"
                       placeholder="Email"
                       value={guestEmail}
                       onChange={(e) => setGuestEmail(e.target.value)}
-                      className="luxury-input w-full"
+                      className="tech-input w-full"
                       required
                     />
-                    <p className="text-xs text-[var(--text-secondary)] font-['Inter']">
+                    <p className="text-xs text-[#888888] font-['Urbanist']">
                       Your personal data is collected in the course of providing remote chat assistance and will be processed in full compliance with our privacy policy.
                     </p>
                     <div className="flex items-center space-x-2">
-                      <input type="checkbox" id="accept" required className="rounded border-2 border-[var(--border-color)]" />
-                      <label htmlFor="accept" className="text-xs text-[var(--text-secondary)] font-['Inter']">I accept</label>
+                      <input type="checkbox" id="accept" required className="rounded border-2 border-[#014737]" />
+                      <label htmlFor="accept" className="text-xs text-[#888888] font-['Urbanist']">I accept</label>
                     </div>
                     <button
                       type="submit"
-                      className="w-full btn-primary py-3 rounded-xl font-medium shadow-luxury hover-lift"
+                      className="w-full btn-primary py-3 rounded-2xl font-medium hover-lift"
                     >
                       Start chat
                     </button>
@@ -211,10 +211,10 @@ const ChatWidget: React.FC = () => {
                         className={`flex ${message.isAdmin ? 'justify-start' : 'justify-end'}`}
                       >
                         <div
-                          className={`max-w-xs px-4 py-3 rounded-xl text-sm transition-all duration-300 font-['Inter'] ${
+                          className={`max-w-xs px-4 py-3 rounded-2xl text-sm transition-all duration-300 font-['Urbanist'] ${
                             message.isAdmin
-                              ? 'luxury-card border-2 border-[var(--border-color)] shadow-luxury'
-                              : 'bg-[var(--primary-accent)] text-white'
+                              ? 'tech-card border border-[#014737]/10'
+                              : 'bg-[#014737] text-white'
                           }`}
                         >
                           {message.message}
@@ -225,11 +225,11 @@ const ChatWidget: React.FC = () => {
                     {/* Typing indicator */}
                     {isTyping && (
                       <div className="flex justify-start">
-                        <div className="luxury-card text-[var(--text-primary)] px-3 py-2 rounded-lg text-sm border-2 border-[var(--border-color)] shadow-luxury">
+                        <div className="tech-card text-[#333333] px-3 py-2 rounded-2xl text-sm border border-[#014737]/10">
                           <div className="flex space-x-1">
-                            <div className="w-2 h-2 bg-[var(--primary-accent)] rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-[var(--primary-accent)] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                            <div className="w-2 h-2 bg-[var(--primary-accent)] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                            <div className="w-2 h-2 bg-[#014737] rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-[#014737] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                            <div className="w-2 h-2 bg-[#014737] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                           </div>
                         </div>
                       </div>
@@ -239,7 +239,7 @@ const ChatWidget: React.FC = () => {
                   </div>
 
                   {/* Message Input */}
-                  <div className="p-6 border-t-2 border-[var(--border-color)]">
+                  <div className="p-6 border-t border-[#014737]/10">
                     <div className="flex space-x-2">
                       <input
                         type="text"
@@ -247,15 +247,15 @@ const ChatWidget: React.FC = () => {
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                        className="flex-1 luxury-input"
+                        className="flex-1 tech-input"
                       />
                       <button
                         onClick={handleSendMessage}
-                        className="px-4 py-2 btn-primary rounded-xl font-medium shadow-luxury hover-lift transition-all duration-300"
+                        className="px-4 py-2 btn-primary rounded-2xl font-medium hover-lift transition-all duration-300"
                       >
                         <Send size={16} />
                       </button>
-                      <button className="px-4 py-2 btn-secondary rounded-xl shadow-luxury hover-lift transition-all duration-300">
+                      <button className="px-4 py-2 btn-secondary rounded-2xl hover-lift transition-all duration-300">
                         <Mic size={16} />
                       </button>
                     </div>
