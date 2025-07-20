@@ -198,39 +198,44 @@ const Index = () => {
       />
 
       {/* ENHANCED HERO SECTION WITH PROMINENT BUTTERFLY WINGS */}
-      <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
+      <div className="relative min-h-screen overflow-hidden flex items-center justify-center" style={{ backgroundColor: '#F9F6ED' }}>
         {/* Enhanced Butterfly Background - More Visible */}
-        <div className="absolute inset-0 w-full h-full" style={{ transform: 'scale(1.4)', zIndex: 1 }}>
+        <div className="absolute inset-0 w-full h-full" style={{ transform: 'scale(1.2)', zIndex: 1 }}>
           <ButterflyScene />
         </div>
         
-        {/* Wing overlay for better visibility */}
-        <div className="absolute inset-0 wing-overlay" style={{ zIndex: 2 }} />
+        {/* Subtle backdrop for logo contrast */}
+        <div className="absolute inset-0" style={{ 
+          background: 'radial-gradient(ellipse 50% 40% at 50% 50%, rgba(249, 246, 237, 0.3) 0%, transparent 70%)',
+          zIndex: 2 
+        }} />
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8" style={{ zIndex: 3 }}>
+        <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-8" style={{ zIndex: 3 }}>
           <div className="p-8 sm:p-12 lg:p-16 animate-fade-in-up">
             {/* Logo */}
-            <div className="mb-8">
+            <div className="mb-12 relative">
+              {/* Logo backdrop for contrast */}
+              <div className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-3xl transform scale-110" />
               <img
                 src="/IMG-20250305-WA0003-removebg-preview.png"
                 alt="RARITONE"
-                className="mx-auto w-full max-w-xs sm:max-w-2xl h-auto gentle-float brand-logo"
+                className="relative mx-auto w-full max-w-sm sm:max-w-3xl h-auto gentle-float brand-logo"
                 style={{ 
-                  filter: 'drop-shadow(0 0 30px rgba(1, 71, 55, 0.3))',
+                  filter: 'drop-shadow(0 0 40px rgba(8, 60, 48, 0.4)) drop-shadow(0 0 80px rgba(167, 203, 184, 0.3))',
                 }}
               />
             </div>
 
             {/* Tagline */}
-            <p className="hero-subtitle font-light mb-16 opacity-95 animate-slide-in-right">
+            <p className="text-xl sm:text-2xl font-light mb-16 opacity-90 animate-slide-in-right" style={{ color: '#083C30' }}>
               Fashion Meets Technology
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-16 animate-scale-in">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mb-16 animate-scale-in">
               <button
-                className="btn-primary font-medium flex items-center space-x-3 justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base hover-lift"
+                className="tech-cta-primary font-medium flex items-center space-x-3 justify-center w-full max-w-xs sm:min-w-[260px] px-10 py-5 sm:px-12 sm:py-6 text-sm sm:text-base hover-lift"
                 onClick={() => navigate('/scan')}
               >
                 <Camera size={isMobile ? 18 : 20} />
@@ -238,7 +243,7 @@ const Index = () => {
               </button>
               
               <button
-                className="btn-secondary font-medium flex items-center space-x-3 justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base hover-lift"
+                className="tech-cta-secondary font-medium flex items-center space-x-3 justify-center w-full max-w-xs sm:min-w-[260px] px-10 py-5 sm:px-12 sm:py-6 text-sm sm:text-base hover-lift"
                 onClick={() => navigate('/catalog')}
               >
                 <ShoppingBag size={isMobile ? 18 : 20} />
@@ -247,9 +252,9 @@ const Index = () => {
             </div>
 
             {/* Privacy Notice */}
-            <div className="max-w-md mx-auto animate-fade-in-up">
-              <div className="tech-card p-4 text-center">
-                <p className="text-xs sm:text-sm text-[#888888] leading-relaxed">
+            <div className="max-w-lg mx-auto animate-fade-in-up">
+              <div className="tech-privacy-card p-5 text-center">
+                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#083C30' }}>
                   This site uses webcam access to enable AI-powered try-ons. Your camera data is never stored or shared.
                 </p>
               </div>
@@ -259,14 +264,14 @@ const Index = () => {
       </div>
 
       {/* TECH FEATURES SECTION */}
-      <section className="py-12 sm:py-20">
+      <section className="py-12 sm:py-20" style={{ backgroundColor: '#F9F6ED' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
-              <Zap className="mr-4" size={isMobile ? 28 : 36} color="#014737" />
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 flex items-center justify-center" style={{ color: '#083C30' }}>
+              <Zap className="mr-4" size={isMobile ? 28 : 36} color="#083C30" />
               Revolutionary Technology
             </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+            <p className="text-lg sm:text-xl max-w-2xl mx-auto px-4" style={{ color: '#A7CBB8' }}>
               Experience the future of fashion with our cutting-edge AI technology and precision fitting.
             </p>
           </div>
@@ -275,14 +280,14 @@ const Index = () => {
             {techFeatures.map((feature, index) => (
               <div
                 key={feature.title}
-                className="feature-card hover-lift animate-fade-in-up"
+                className="tech-feature-card hover-lift animate-fade-in-up"
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
               >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#c6dac6] bg-opacity-30 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center tech-icon-bg">
                   {feature.icon}
                 </div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">
+                <h3 className="text-xl font-semibold mb-3" style={{ color: '#083C30' }}>{feature.title}</h3>
+                <p className="text-base leading-relaxed" style={{ color: '#A7CBB8' }}>
                   {feature.description}
                 </p>
               </div>
@@ -292,14 +297,14 @@ const Index = () => {
       </section>
 
       {/* SHOP BY CATEGORY SECTION */}
-      <section className="py-12 sm:py-20" style={{ backgroundColor: '#f9f6f0' }}>
+      <section className="py-12 sm:py-20" style={{ backgroundColor: 'rgba(167, 203, 184, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16 animate-fade-in-up">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
-              <TrendingUp className="mr-4" size={isMobile ? 28 : 36} color="#014737" />
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 flex items-center justify-center" style={{ color: '#083C30' }}>
+              <TrendingUp className="mr-4" size={isMobile ? 28 : 36} color="#083C30" />
               Shop by Category
             </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+            <p className="text-lg sm:text-xl max-w-2xl mx-auto px-4" style={{ color: '#A7CBB8' }}>
               Discover our curated collection of premium fashion categories.
             </p>
           </div>
@@ -312,14 +317,14 @@ const Index = () => {
                 style={{ animationDelay: `${0.1 * (index + 1)}s` }}
                 onClick={() => handleCategoryClick(category.category)}
               >
-                <div className="category-card hover-lift">
+                <div className="tech-category-card hover-lift">
                   <div className="aspect-square relative overflow-hidden">
                     <img
                       src={category.image}
                       alt={category.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#014737]/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#083C30]/70 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="font-medium text-white text-lg sm:text-xl font-['Urbanist'] mb-1">
                         {category.name}
@@ -337,14 +342,14 @@ const Index = () => {
       </section>
 
       {/* CUSTOMER REVIEW SLIDER SECTION */}
-      <section className="py-12 sm:py-20 overflow-hidden">
+      <section className="py-12 sm:py-20 overflow-hidden" style={{ backgroundColor: '#F9F6ED' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <div className="text-center animate-fade-in-up">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
-              <Star className="mr-4" size={isMobile ? 28 : 36} color="#014737" />
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4 flex items-center justify-center" style={{ color: '#083C30' }}>
+              <Star className="mr-4" size={isMobile ? 28 : 36} color="#083C30" />
               What Our Customers Say
             </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+            <p className="text-lg sm:text-xl max-w-2xl mx-auto px-4" style={{ color: '#A7CBB8' }}>
               Join thousands of satisfied customers who love our AI-powered fashion experience.
             </p>
           </div>
@@ -355,22 +360,22 @@ const Index = () => {
             {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-80 testimonial-card mx-4"
+                className="flex-shrink-0 w-80 tech-testimonial-card mx-4"
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-14 h-14 rounded-full bg-[#014737] flex items-center justify-center text-white font-semibold mr-4 font-['Urbanist']">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-semibold mr-4 font-['Urbanist']" style={{ backgroundColor: '#083C30' }}>
                     {review.avatar}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#333333] font-['Urbanist']">{review.name}</h4>
+                    <h4 className="font-semibold font-['Urbanist']" style={{ color: '#083C30' }}>{review.name}</h4>
                     <div className="flex">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} size={16} fill="#014737" color="#014737" />
+                        <Star key={i} size={16} fill="#083C30" color="#083C30" />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="text-[#888888] italic font-['Urbanist'] leading-relaxed">"{review.comment}"</p>
+                <p className="italic font-['Urbanist'] leading-relaxed" style={{ color: '#A7CBB8' }}>"{review.comment}"</p>
               </div>
             ))}
           </div>
@@ -378,7 +383,7 @@ const Index = () => {
       </section>
 
       {/* FOOTER SECTION */}
-      <footer className="tech-footer">
+      <footer className="tech-footer" style={{ background: 'linear-gradient(135deg, #F9F6ED 0%, #083C30 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Brand Section */}
@@ -388,21 +393,21 @@ const Index = () => {
                 alt="RARITONE"
                 className="h-16 sm:h-20 w-auto mb-6"
               />
-              <p className="text-[#888888] max-w-md leading-relaxed text-sm sm:text-base font-['Urbanist'] mb-6">
+              <p className="text-white/80 max-w-md leading-relaxed text-sm sm:text-base font-['Urbanist'] mb-6">
                 Revolutionizing fashion with AI-powered body scanning technology. 
                 Experience perfect fit and personalized style recommendations across India.
               </p>
               
               {/* Newsletter Signup */}
-              <div className="newsletter-section max-w-md">
-                <h4 className="font-semibold text-[#333333] mb-3 font-['Urbanist']">Stay Updated</h4>
+              <div className="tech-newsletter-section max-w-md">
+                <h4 className="font-semibold text-white mb-3 font-['Urbanist']">Stay Updated</h4>
                 <div className="flex space-x-2">
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="flex-1 tech-input text-sm"
+                    className="flex-1 tech-newsletter-input text-sm"
                   />
-                  <button className="btn-primary px-4 py-2 text-sm">
+                  <button className="tech-newsletter-btn px-4 py-2 text-sm">
                     Subscribe
                   </button>
                 </div>
@@ -411,42 +416,42 @@ const Index = () => {
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-semibold text-[#333333] mb-6 text-lg font-['Urbanist']">Quick Links</h3>
+              <h3 className="font-semibold text-white mb-6 text-lg font-['Urbanist']">Quick Links</h3>
               <ul className="space-y-3">
-                <li><a href="/about" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">About Us</a></li>
-                <li><a href="/contact" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Contact</a></li>
-                <li><a href="/faqs" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">FAQ</a></li>
-                <li><a href="/quick-links" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Privacy Policy</a></li>
-                <li><a href="/returns" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Returns & Exchanges</a></li>
-                <li><a href="/terms" className="text-[#888888] hover:text-[#014737] text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Terms & Conditions</a></li>
+                <li><a href="/about" className="text-white/70 hover:text-white text-sm sm:text-base transition-all duration-300 font-['Urbanist']">About Us</a></li>
+                <li><a href="/contact" className="text-white/70 hover:text-white text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Contact</a></li>
+                <li><a href="/faqs" className="text-white/70 hover:text-white text-sm sm:text-base transition-all duration-300 font-['Urbanist']">FAQ</a></li>
+                <li><a href="/quick-links" className="text-white/70 hover:text-white text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Privacy Policy</a></li>
+                <li><a href="/returns" className="text-white/70 hover:text-white text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Returns & Exchanges</a></li>
+                <li><a href="/terms" className="text-white/70 hover:text-white text-sm sm:text-base transition-all duration-300 font-['Urbanist']">Terms & Conditions</a></li>
               </ul>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h3 className="font-semibold text-[#333333] mb-6 text-lg font-['Urbanist']">Contact</h3>
+              <h3 className="font-semibold text-white mb-6 text-lg font-['Urbanist']">Contact</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-[#c6dac6] flex items-center justify-center">
-                    <Mail size={16} className="text-[#014737]" />
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <Mail size={16} className="text-white" />
                   </div>
-                  <span className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
+                  <span className="text-white/80 text-sm sm:text-base font-['Urbanist']">
                     hello@raritone.in
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-[#c6dac6] flex items-center justify-center">
-                    <Phone size={16} className="text-[#014737]" />
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <Phone size={16} className="text-white" />
                   </div>
-                  <span className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
+                  <span className="text-white/80 text-sm sm:text-base font-['Urbanist']">
                     +91 98765 43210
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-[#c6dac6] flex items-center justify-center">
-                    <MapPin size={16} className="text-[#014737]" />
+                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <MapPin size={16} className="text-white" />
                   </div>
-                  <span className="text-[#888888] text-sm sm:text-base font-['Urbanist']">
+                  <span className="text-white/80 text-sm sm:text-base font-['Urbanist']">
                     Mumbai, India
                   </span>
                 </div>
@@ -454,15 +459,15 @@ const Index = () => {
 
               {/* Social Icons */}
               <div className="mt-6">
-                <h4 className="font-semibold text-[#333333] mb-3 font-['Urbanist']">Follow Us</h4>
+                <h4 className="font-semibold text-white mb-3 font-['Urbanist']">Follow Us</h4>
                 <div className="flex space-x-3">
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#c6dac6] flex items-center justify-center hover:bg-[#014737] hover:text-white transition-all duration-300">
+                  <a href="#" className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-[#083C30] transition-all duration-300 text-white">
                     <span className="text-sm font-bold">IG</span>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#c6dac6] flex items-center justify-center hover:bg-[#014737] hover:text-white transition-all duration-300">
+                  <a href="#" className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-[#083C30] transition-all duration-300 text-white">
                     <span className="text-sm font-bold">X</span>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-[#c6dac6] flex items-center justify-center hover:bg-[#014737] hover:text-white transition-all duration-300">
+                  <a href="#" className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-[#083C30] transition-all duration-300 text-white">
                     <span className="text-sm font-bold">LI</span>
                   </a>
                 </div>
@@ -473,7 +478,7 @@ const Index = () => {
           <div className="elegant-divider"></div>
           
           <div className="text-center">
-            <p className="text-[#888888] text-xs sm:text-sm font-['Urbanist']">
+            <p className="text-white/60 text-xs sm:text-sm font-['Urbanist']">
               © 2025 RARITONE. All rights reserved. | Powered by AI Fashion Technology | Made in India with ❤️
             </p>
           </div>
