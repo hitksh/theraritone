@@ -1,7 +1,5 @@
-'use client';
-
 import React, { useState, useEffect, memo } from 'react';
-import { Search, ShoppingBag, User, Menu, X, Heart, ArrowLeft } from 'lucide-react';
+import { Search, ShoppingBag, User, Menu, X, Heart, ArrowLeft, Home, LayoutGrid, Settings } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginModal from '@/components/LoginModal';
@@ -122,31 +120,247 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
     navigate('/');
   };
 
-  const menuItems = [
-    { label: 'Shop', path: '/catalog' },
-    { label: 'Body Scan', path: '/scan' },
-    { label: 'Settings', path: '/settings' }
+  const navItems = [
+    { label: 'Home', path: '/', icon: Home },
+    { label: 'Shop', path: '/catalog', icon: ShoppingBag },
+    { label: 'Categories', path: '/catalog', icon: LayoutGrid },
+    { label: 'Settings', path: '/settings', icon: Settings }
   ];
 
   return (
     <>
-      {/* FUTURISTIC TECH NAVBAR */}
+      {/* PASTEL NAVBAR */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-500 tech-navbar ${
           isHomepage ? (isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0') : 'translate-y-0 opacity-100'
         }`}
         data-menu-container
         style={{ 
-          background: 'rgba(249, 246, 237, 0.95)',
+          background: 'rgba(224, 218, 205, 0.95)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(8, 60, 48, 0.1)',
-          boxShadow: '0 4px 20px rgba(8, 60, 48, 0.08)'
+          borderBottom: '1px solid rgba(129, 199, 132, 0.2)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
         }}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-full">
           <div className="flex items-center justify-between h-full">
-            {/* Left - Back Button or Menu */}
-            <div className="flex items-center w-32 sm:w-40">
+            {/* Left - Logo */}
+            <div className="flex items-center">
+              <img
+                src="/IMG-20250305-WA0003-removebg-preview.png"
+                alt="RARITONE"
+                className="cursor-pointer transition-all duration-300 brand-logo"
+                onClick={() => navigate('/')}
+                style={{
+                  height: isMobile ? '48px' : '56px',
+                  width: 'auto',
+                  maxWidth: isMobile ? '180px' : '240px',
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+
+            {/* Center - Navigation Links (Desktop) */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => navigate(item.path)}
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 pastel-nav-button hover:bg-white/50"
+                  >
+                    <IconComponent size={18} />
+                    <span className="font-medium">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right - Action Buttons */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              {/* Search Button */}
+              <button
+                onClick={onSearchOpen}
+                className="pastel-nav-icon transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+              >
+                <Search size={22} />
+              </button>
+              
+              {/* Wishlist Button */}
+              <button 
+                onClick={() => navigate('/wishlist')}
+                className="relative pastel-nav-icon transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+              >
+                <Heart size={22} />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium bg-red-500">
+                    {wishlistCount}
+                  </span>
+                )}
+              </button>
+
+              {/* Cart Button */}
+              <button
+                onClick={() => navigate('/cart')}
+                className="relative pastel-nav-icon transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+              >
+                <ShoppingBag size={22} />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-1 -right-1 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium bg-red-500">
+                    {cartItemsCount}
+                  </span>
+                )}
+              </button>
+              
+              {/* Profile Button */}
+              <button 
+                onClick={handleProfileClick}
+                className="pastel-nav-icon transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105"
+              >
+                <User size={22} />
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={handleMenuClick}
+                className="md:hidden pastel-nav-icon transition-all duration-300 p-3 rounded-2xl hover:bg-white/50 min-h-[48px] min-w-[48px] flex items-center justify-center"
+              >
+                <Menu size={22} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden mt-2 mx-4 rounded-2xl overflow-hidden"
+            style={{
+              background: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(129, 199, 132, 0.2)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <div className="py-4">
+              {navItems.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => {
+                      navigate(item.path);
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full flex items-center space-x-3 px-6 py-4 transition-all duration-300 hover:bg-gray-50 pastel-menu-item"
+                  >
+                    <IconComponent size={20} />
+                    <span className="font-medium">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </nav>
+
+      {/* Profile Sidebar */}
+      {isProfileOpen && user && (
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+            onClick={() => setIsProfileOpen(false)}
+          />
+          <div className="fixed right-0 top-0 h-full z-50 w-full max-w-md rounded-l-2xl transition-none animate-slide-in-right" style={{
+            background: 'rgba(255, 255, 255, 0.98)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(129, 199, 132, 0.2)',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)'
+          }}>
+            <div className="p-6 sm:p-8 h-full flex flex-col">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-xl sm:text-2xl font-medium" style={{ color: 'var(--text-primary)' }}>
+                  Profile
+                </h2>
+                <button
+                  onClick={() => setIsProfileOpen(false)}
+                  className="transition-all duration-300 p-3 rounded-2xl hover:bg-gray-100 min-h-[48px] min-w-[48px] flex items-center justify-center hover:scale-105 pastel-close-btn"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="mb-8">
+                <div className="flex items-center space-x-3 sm:space-x-4 mb-6">
+                  <div className="rounded-full flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 pastel-profile-avatar">
+                    {user?.photoURL ? (
+                      <img src={user.photoURL} alt="Profile" className="w-full h-full rounded-full object-cover" />
+                    ) : (
+                      <User size={24} style={{ color: 'var(--text-primary)' }} />
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg sm:text-xl" style={{ color: 'var(--text-primary)' }}>
+                      {user.displayName || 'User'}
+                    </h3>
+                    <p className="text-sm sm:text-base" style={{ color: 'var(--text-muted)' }}>
+                      {user.email}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3 flex-1">
+                {[
+                  { label: 'Profile Info', path: '/profile' },
+                  { label: 'Order History', path: '/orders' },
+                  { label: 'Saved Items', path: '/wishlist' },
+                ].map((action, index) => (
+                  <button
+                    key={action.label}
+                    onClick={() => {
+                      navigate(action.path);
+                      setIsProfileOpen(false);
+                    }}
+                    className="w-full text-left rounded-2xl transition-all duration-300 hover:bg-gray-100 hover:scale-102 px-4 py-3 sm:px-5 sm:py-4 text-sm sm:text-base hover-lift animate-fade-in-up pastel-profile-btn"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {action.label}
+                  </button>
+                ))}
+                
+                <button
+                  onClick={() => {
+                    logout();
+                    setIsProfileOpen(false);
+                  }}
+                  className="w-full text-left text-red-600 hover:bg-red-50 border-2 border-red-600 rounded-2xl transition-all duration-300 hover:scale-102 px-4 py-3 sm:px-5 sm:py-4 text-sm sm:text-base hover-lift animate-fade-in-up"
+                  style={{ animationDelay: '0.4s' }}
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
+    </>
+  );
+};
+
+Navbar.displayName = 'Navbar';
+
+export default Navbar;
               {showBackButton ? (
                 <button
                   onClick={handleBackClick}

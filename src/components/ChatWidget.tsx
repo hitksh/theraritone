@@ -1,7 +1,5 @@
-'use client';
-
 import React, { useState, useEffect, useRef } from 'react';
-import { X, ChevronDown, Send, Mic } from 'lucide-react';
+import { X, ChevronDown, Send, Mic, MessageCircle } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { sendMessage, fetchMessages, sendGuestMessage, ChatMessage } from '@/lib/chat';
 
@@ -108,48 +106,34 @@ const ChatWidget: React.FC = () => {
 
   return (
     <>
-      {/* FUTURISTIC CHAT BUTTON */}
+      {/* PASTEL CHAT BUTTON */}
       <button
         onClick={toggleChat}
-        className="fixed bottom-8 right-8 z-40 px-8 py-4 rounded-full transition-all duration-500 flex items-center space-x-4 hover-lift hover:scale-105 animate-scale-in"
+        className="fixed bottom-8 right-8 z-40 w-16 h-16 rounded-full transition-all duration-500 flex items-center justify-center hover-lift hover:scale-105 animate-scale-in"
         style={{
-          background: '#083C30',
-          color: 'white',
-          border: '1px solid rgba(167, 203, 184, 0.3)',
-          boxShadow: '0 8px 32px rgba(8, 60, 48, 0.3)'
+          background: 'white',
+          color: '#81c784',
+          border: '1px solid #e0dacd',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
         }}
       >
-        {/* R Logo container */}
-        <div className="w-10 h-10 relative rounded-full overflow-hidden flex items-center justify-center border-2 border-white/30">
-          <img
-            src="/R.png"
-            alt="RARITONE Chat"
-            className="w-7 h-7 object-contain"
-            style={{
-              maxWidth: '40px',
-              maxHeight: '40px'
-            }}
-          />
-        </div>
-        <span className="font-medium text-white font-['Urbanist']">
-          Chat with us
-        </span>
+        <MessageCircle size={24} />
       </button>
 
-      {/* FUTURISTIC CHAT MODAL */}
+      {/* PASTEL CHAT MODAL */}
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50 w-96 rounded-2xl overflow-hidden transition-all duration-500 animate-slide-in-right"
           style={{
-            background: 'rgba(249, 246, 237, 0.98)',
+            background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(8, 60, 48, 0.1)',
-            boxShadow: '0 20px 60px rgba(8, 60, 48, 0.15)'
+            border: '1px solid #e0dacd',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)'
           }}
         >
           {/* Header */}
-          <div className="p-6 flex items-center justify-between border-b border-[#083C30]/10" style={{ color: '#083C30' }}>
+          <div className="p-6 flex items-center justify-between border-b" style={{ borderColor: '#e0dacd', color: '#333333' }}>
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center border-2 border-[#083C30]">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center border-2" style={{ borderColor: '#81c784' }}>
                 <img
                   src="/R.png"
                   alt="RARITONE"
@@ -160,7 +144,7 @@ const ChatWidget: React.FC = () => {
                   }}
                 />
               </div>
-              <span className="font-medium font-['Urbanist']">Chat with a client advisor</span>
+              <span className="font-medium">Chat with a client advisor</span>
             </div>
             
             <div className="flex items-center space-x-2">
@@ -186,31 +170,32 @@ const ChatWidget: React.FC = () => {
             <div>
               {/* Guest Email Form */}
               {showEmailForm && !user && (
-                <div className="p-6 border-b border-[#083C30]/10">
-                  <h4 className="font-medium mb-3 font-['Urbanist'] text-lg" style={{ color: '#083C30' }}>Privacy Notice</h4>
+                <div className="p-6 border-b" style={{ borderColor: '#e0dacd' }}>
+                  <h4 className="font-medium mb-3 text-lg" style={{ color: '#333333' }}>Privacy Notice</h4>
                   <form onSubmit={handleGuestEmailSubmit} className="space-y-3">
                     <input
                       type="email"
                       placeholder="Email"
                       value={guestEmail}
                       onChange={(e) => setGuestEmail(e.target.value)}
-                      className="w-full px-4 py-3 border border-[#083C30]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#083C30]/20"
+                      className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2" 
+                      style={{ borderColor: '#e0dacd', focusRingColor: 'rgba(129, 199, 132, 0.2)' }}
                       required
                     />
-                    <p className="text-xs font-['Urbanist']" style={{ color: '#A7CBB8' }}>
+                    <p className="text-xs" style={{ color: '#666666' }}>
                       Your personal data is collected in the course of providing remote chat assistance and will be processed in full compliance with our privacy policy.
                     </p>
                     <div className="flex items-center space-x-2">
-                      <input type="checkbox" id="accept" required className="rounded border-2 border-[#083C30]" />
-                      <label htmlFor="accept" className="text-xs font-['Urbanist']" style={{ color: '#A7CBB8' }}>I accept</label>
+                      <input type="checkbox" id="accept" required className="rounded border-2" style={{ borderColor: '#81c784' }} />
+                      <label htmlFor="accept" className="text-xs" style={{ color: '#666666' }}>I accept</label>
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-3 rounded-2xl font-medium hover-lift transition-all duration-300"
+                      className="w-full py-3 rounded-2xl font-medium hover-lift transition-all duration-300 pastel-btn-primary"
                       style={{
-                        background: '#083C30',
+                        background: '#81c784',
                         color: 'white',
-                        boxShadow: '0 4px 15px rgba(8, 60, 48, 0.3)'
+                        boxShadow: '0 4px 15px rgba(129, 199, 132, 0.3)'
                       }}
                     >
                       Start chat
@@ -231,10 +216,10 @@ const ChatWidget: React.FC = () => {
                         <div
                           className={`max-w-xs px-4 py-3 rounded-2xl text-sm transition-all duration-300 font-['Urbanist'] ${
                             message.isAdmin
-                              ? 'bg-white border border-[#083C30]/10'
+                              ? 'bg-white border'
                               : 'text-white'
                           }`}
-                          style={message.isAdmin ? { color: '#083C30' } : { backgroundColor: '#083C30' }}
+                          style={message.isAdmin ? { color: '#333333', borderColor: '#e0dacd' } : { backgroundColor: '#81c784' }}
                         >
                           {message.message}
                         </div>
@@ -244,11 +229,11 @@ const ChatWidget: React.FC = () => {
                     {/* Typing indicator */}
                     {isTyping && (
                       <div className="flex justify-start">
-                        <div className="bg-white px-3 py-2 rounded-2xl text-sm border border-[#083C30]/10" style={{ color: '#083C30' }}>
+                        <div className="bg-white px-3 py-2 rounded-2xl text-sm border" style={{ color: '#333333', borderColor: '#e0dacd' }}>
                           <div className="flex space-x-1">
-                            <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#083C30' }}></div>
-                            <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#083C30', animationDelay: '0.1s' }}></div>
-                            <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#083C30', animationDelay: '0.2s' }}></div>
+                            <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#81c784' }}></div>
+                            <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#81c784', animationDelay: '0.1s' }}></div>
+                            <div className="w-2 h-2 rounded-full animate-bounce" style={{ backgroundColor: '#81c784', animationDelay: '0.2s' }}></div>
                           </div>
                         </div>
                       </div>
@@ -258,7 +243,7 @@ const ChatWidget: React.FC = () => {
                   </div>
 
                   {/* Message Input */}
-                  <div className="p-6 border-t border-[#083C30]/10">
+                  <div className="p-6 border-t" style={{ borderColor: '#e0dacd' }}>
                     <div className="flex space-x-2">
                       <input
                         type="text"
@@ -266,20 +251,21 @@ const ChatWidget: React.FC = () => {
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                        className="flex-1 px-4 py-3 border border-[#083C30]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#083C30]/20"
+                        className="flex-1 px-4 py-3 border rounded-xl focus:outline-none focus:ring-2"
+                        style={{ borderColor: '#e0dacd', focusRingColor: 'rgba(129, 199, 132, 0.2)' }}
                       />
                       <button
                         onClick={handleSendMessage}
-                        className="px-4 py-2 rounded-2xl font-medium hover-lift transition-all duration-300"
+                        className="px-4 py-2 rounded-2xl font-medium hover-lift transition-all duration-300 pastel-btn-primary"
                         style={{
-                          background: '#083C30',
+                          background: '#81c784',
                           color: 'white',
-                          boxShadow: '0 4px 15px rgba(8, 60, 48, 0.3)'
+                          boxShadow: '0 4px 15px rgba(129, 199, 132, 0.3)'
                         }}
                       >
                         <Send size={16} />
                       </button>
-                      <button className="px-4 py-2 rounded-2xl hover-lift transition-all duration-300 border-2 border-[#083C30] hover:bg-[#083C30] hover:text-white" style={{ color: '#083C30' }}>
+                      <button className="px-4 py-2 rounded-2xl hover-lift transition-all duration-300 border-2 hover:bg-[#81c784] hover:text-white" style={{ color: '#81c784', borderColor: '#81c784' }}>
                         <Mic size={16} />
                       </button>
                     </div>
