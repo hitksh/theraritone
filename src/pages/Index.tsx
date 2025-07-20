@@ -180,8 +180,8 @@ const Index = () => {
           <ButterflyScene />
         </div>
         
-        {/* Dark gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" style={{ zIndex: 2 }} />
+        {/* Subtle overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30" style={{ zIndex: 2 }} />
 
         {/* Hero Content - LOGO AT BUTTERFLY CENTER */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-8" style={{ zIndex: 3, transform: 'translateY(0vh)' }}>
@@ -192,17 +192,17 @@ const Index = () => {
                 alt="RARITONE"
                 className="mx-auto w-full max-w-xs sm:max-w-2xl h-auto luxury-float"
                 style={{ 
-                  filter: 'drop-shadow(0 0 40px rgba(209, 169, 128, 0.8)) brightness(1.2)',
-                  textShadow: '0 0 20px rgba(209, 169, 128, 0.5)'
+                  filter: 'drop-shadow(0 0 30px rgba(0, 64, 48, 0.6)) brightness(1.1)',
+                  textShadow: '0 0 15px rgba(0, 64, 48, 0.4)'
                 }}
               />
             </div>
 
-            <p className="hero-subtitle font-light mb-16 opacity-90" 
+            <p className="hero-subtitle font-light mb-16 opacity-95" 
                style={{ 
-                 textShadow: '0 2px 10px rgba(0,0,0,0.8)',
-                 filter: 'brightness(1.2)',
-                 color: 'var(--secondary-accent)'
+                 textShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                 filter: 'brightness(1.1)',
+                 color: 'var(--text-secondary)'
                }}>
               Fashion Meets Technology
             </p>
@@ -210,7 +210,7 @@ const Index = () => {
             {/* EQUAL STYLED BUTTONS */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-16">
               <button
-                className="btn-primary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[220px] px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base"
+                className="btn-primary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base shadow-luxury hover-lift"
                 onClick={() => navigate('/scan')}
               >
                 <Camera size={isMobile ? 18 : 20} />
@@ -218,7 +218,7 @@ const Index = () => {
               </button>
               
               <button
-                className="btn-secondary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[220px] px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base"
+                className="btn-secondary font-medium flex items-center space-x-3 rounded-full justify-center w-full max-w-xs sm:min-w-[240px] px-8 py-4 sm:px-10 sm:py-5 text-sm sm:text-base shadow-luxury hover-lift"
                 onClick={() => navigate('/catalog')}
               >
                 <ShoppingBag size={isMobile ? 18 : 20} />
@@ -229,12 +229,13 @@ const Index = () => {
             {/* Notice Text with Better Visibility */}
             <p className="max-w-md mx-auto leading-relaxed text-xs sm:text-sm px-4 opacity-80"
                style={{ 
-                 textShadow: '0 2px 8px rgba(0,0,0,0.8)',
-                 background: 'rgba(0,0,0,0.3)',
+                 textShadow: '0 1px 4px rgba(0,0,0,0.3)',
+                 background: 'rgba(255,255,255,0.9)',
                  padding: '8px 16px',
-                 borderRadius: '8px',
-                 backdropFilter: 'blur(10px)',
-                 color: 'var(--secondary-accent)'
+                 borderRadius: '12px',
+                 backdropFilter: 'blur(5px)',
+                 color: 'var(--text-secondary)',
+                 border: '1px solid rgba(0, 64, 48, 0.2)'
                }}>
               This site uses webcam access to enable AI-powered try-ons. Your camera data is never stored or shared.
             </p>
@@ -247,7 +248,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16">
             <h2 className="hero-title mb-4 flex items-center justify-center">
-              <Shield className="mr-3" size={isMobile ? 24 : 32} color="var(--primary-accent)" />
+              <Shield className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
               AI Body Scan Benefits
             </h2>
             <p className="hero-subtitle max-w-2xl mx-auto px-4">
@@ -257,8 +258,10 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
             {/* 100% Private */}
-            <div className="feature-card">
-              <Shield size={48} color="var(--primary-accent)" className="mx-auto mb-4" />
+            <div className="feature-card card-3d hover-lift">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
+                <Shield size={32} color="var(--primary-accent)" />
+              </div>
               <h3 className="feature-title">100% Private</h3>
               <p className="feature-description">
                 Body data never stored or sent online. All processing happens locally on your device for complete privacy.
@@ -266,8 +269,10 @@ const Index = () => {
             </div>
 
             {/* 99% Accurate */}
-            <div className="feature-card">
-              <Zap size={48} color="var(--primary-accent)" className="mx-auto mb-4" />
+            <div className="feature-card card-3d hover-lift">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
+                <Zap size={32} color="var(--primary-accent)" />
+              </div>
               <h3 className="feature-title">99% Accurate</h3>
               <p className="feature-description">
                 AI scanning ensures near-perfect micro-fit. Our technology provides the most accurate measurements possible.
@@ -275,8 +280,10 @@ const Index = () => {
             </div>
 
             {/* 30 Second Scan */}
-            <div className="feature-card">
-              <Clock size={48} color="var(--primary-accent)" className="mx-auto mb-4" />
+            <div className="feature-card card-3d hover-lift">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
+                <Clock size={32} color="var(--primary-accent)" />
+              </div>
               <h3 className="feature-title">30 Second Scan</h3>
               <p className="feature-description">
                 Fast scan with only a smartphone camera. Get your perfect measurements in half a minute.
@@ -291,7 +298,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16">
             <h2 className="hero-title mb-4 flex items-center justify-center">
-              <TrendingUp className="mr-3" size={isMobile ? 24 : 32} color="var(--primary-accent)" />
+              <TrendingUp className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
               Shop by Category
             </h2>
             <p className="hero-subtitle max-w-2xl mx-auto px-4">
@@ -303,25 +310,25 @@ const Index = () => {
             {categories.map((category) => (
               <div
                 key={category.name}
-                className="group cursor-pointer"
+                className="group cursor-pointer card-3d"
                 onClick={() => handleCategoryClick(category.category)}
               >
-                <div className="category-card">
+                <div className="category-card hover-lift">
                   <div className="aspect-square relative overflow-hidden">
                     <img
                       src={category.image}
                       alt={category.name}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  </div>
-                  <div className="text-center p-4">
-                    <h3 className="font-medium mb-1 text-[var(--text-primary)] text-base sm:text-lg">
-                      {category.name}
-                    </h3>
-                    <p className="text-[var(--secondary-accent)] text-sm">
-                      {category.count}
-                    </p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary-accent)]/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="font-medium text-white text-lg sm:text-xl font-['Playfair_Display'] mb-1">
+                        {category.name}
+                      </h3>
+                      <p className="text-white/80 text-sm font-['Poppins']">
+                        {category.count}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -335,7 +342,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <div className="text-center">
             <h2 className="hero-title mb-4 flex items-center justify-center">
-              <Star className="mr-3" size={isMobile ? 24 : 32} color="var(--primary-accent)" />
+              <Star className="mr-4" size={isMobile ? 28 : 36} color="var(--primary-accent)" />
               What Our Customers Say
             </h2>
             <p className="hero-subtitle max-w-2xl mx-auto px-4">
@@ -349,14 +356,14 @@ const Index = () => {
             {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-80 luxury-card p-6 mx-3"
+                className="flex-shrink-0 w-80 luxury-card p-8 mx-4 hover-lift"
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-[var(--primary-accent)] flex items-center justify-center text-black font-semibold mr-4">
+                  <div className="w-14 h-14 rounded-full bg-[var(--primary-accent)] flex items-center justify-center text-white font-semibold mr-4 font-['Playfair_Display']">
                     {review.avatar}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[var(--text-primary)]">{review.name}</h4>
+                    <h4 className="font-semibold text-[var(--text-primary)] font-['Playfair_Display']">{review.name}</h4>
                     <div className="flex">
                       {[...Array(review.rating)].map((_, i) => (
                         <Star key={i} size={16} fill="var(--primary-accent)" color="var(--primary-accent)" />
@@ -364,7 +371,7 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-[var(--secondary-accent)] italic">"{review.comment}"</p>
+                <p className="text-[var(--text-secondary)] italic font-['Poppins'] leading-relaxed">"{review.comment}"</p>
               </div>
             ))}
           </div>
@@ -374,16 +381,16 @@ const Index = () => {
       {/* FOOTER SECTION WITH SMOOTH SCROLL LINKS */}
       <footer id="footer" className="py-8 sm:py-16 section-divider border-t">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="luxury-card rounded-2xl p-6 sm:p-8">
+          <div className="luxury-card rounded-2xl p-8 sm:p-12 shadow-luxury">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Brand Section */}
               <div className="lg:col-span-2" id="about">
                 <img
                   src="/IMG-20250305-WA0003-removebg-preview.png"
                   alt="RARITONE"
-                  className="h-16 sm:h-20 w-auto mb-4"
+                  className="h-20 sm:h-24 w-auto mb-6"
                 />
-                <p className="text-[var(--secondary-accent)] max-w-md leading-relaxed text-sm sm:text-base">
+                <p className="text-[var(--text-secondary)] max-w-md leading-relaxed text-sm sm:text-base font-['Poppins']">
                   Revolutionizing fashion with AI-powered body scanning technology. 
                   Experience perfect fit and personalized style recommendations across India.
                 </p>
@@ -391,34 +398,40 @@ const Index = () => {
 
               {/* Quick Links */}
               <div>
-                <h3 className="font-semibold text-[var(--text-primary)] mb-4 text-base sm:text-lg">Quick Links</h3>
+                <h3 className="font-semibold text-[var(--text-primary)] mb-6 text-lg sm:text-xl font-['Playfair_Display']">Quick Links</h3>
                 <ul className="space-y-2">
-                  <li><a href="#about" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">About Us</a></li>
-                  <li><a href="#privacy" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Privacy Policy</a></li>
-                  <li><a href="#returns" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Returns & Exchanges</a></li>
-                  <li><a href="#contact" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Contact Us</a></li>
+                  <li><a href="#about" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">About Us</a></li>
+                  <li><a href="#privacy" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">Privacy Policy</a></li>
+                  <li><a href="#returns" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">Returns & Exchanges</a></li>
+                  <li><a href="#contact" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-all duration-300 font-['Poppins'] hover:translate-x-1">Contact Us</a></li>
                 </ul>
               </div>
 
               {/* Contact Info */}
               <div id="contact">
-                <h3 className="font-semibold text-[var(--text-primary)] mb-4 text-base sm:text-lg">Contact</h3>
+                <h3 className="font-semibold text-[var(--text-primary)] mb-6 text-lg sm:text-xl font-['Playfair_Display']">Contact</h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <Mail size={16} className="text-[var(--secondary-accent)]" />
-                    <span className="text-[var(--secondary-accent)] text-sm sm:text-base">
+                    <div className="w-8 h-8 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
+                      <Mail size={16} className="text-[var(--primary-accent)]" />
+                    </div>
+                    <span className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
                       hello@raritone.in
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Phone size={16} className="text-[var(--secondary-accent)]" />
-                    <span className="text-[var(--secondary-accent)] text-sm sm:text-base">
+                    <div className="w-8 h-8 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
+                      <Phone size={16} className="text-[var(--primary-accent)]" />
+                    </div>
+                    <span className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
                       +91 98765 43210
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <MapPin size={16} className="text-[var(--secondary-accent)]" />
-                    <span className="text-[var(--secondary-accent)] text-sm sm:text-base">
+                    <div className="w-8 h-8 rounded-full bg-[var(--primary-accent)] bg-opacity-10 flex items-center justify-center">
+                      <MapPin size={16} className="text-[var(--primary-accent)]" />
+                    </div>
+                    <span className="text-[var(--text-secondary)] text-sm sm:text-base font-['Poppins']">
                       Mumbai, India
                     </span>
                   </div>
@@ -430,15 +443,15 @@ const Index = () => {
             <div className="section-divider border-t mt-8 sm:mt-12 pt-6 sm:pt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div id="privacy">
-                  <h3 className="font-semibold text-[var(--text-primary)] mb-4">Privacy Policy</h3>
-                  <p className="text-[var(--secondary-accent)] text-sm leading-relaxed">
+                  <h3 className="font-semibold text-[var(--text-primary)] mb-4 font-['Playfair_Display'] text-lg">Privacy Policy</h3>
+                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed font-['Poppins']">
                     Your privacy is our priority. We use advanced encryption and never store your body scan data. 
                     All measurements are processed locally on your device for complete security.
                   </p>
                 </div>
                 <div id="returns">
-                  <h3 className="font-semibold text-[var(--text-primary)] mb-4">Returns & Exchanges</h3>
-                  <p className="text-[var(--secondary-accent)] text-sm leading-relaxed">
+                  <h3 className="font-semibold text-[var(--text-primary)] mb-4 font-['Playfair_Display'] text-lg">Returns & Exchanges</h3>
+                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed font-['Poppins']">
                     30-day hassle-free returns. Free size exchanges. If our AI recommendation doesn't fit perfectly, 
                     we'll make it right with no questions asked.
                   </p>
@@ -446,7 +459,7 @@ const Index = () => {
               </div>
               
               <div className="text-center">
-                <p className="text-[var(--secondary-accent)] text-xs sm:text-sm">
+                <p className="text-[var(--text-secondary)] text-xs sm:text-sm font-['Poppins']">
                   © 2025 RARITONE. All rights reserved. | Powered by AI Fashion Technology | Made in India
                 </p>
               </div>

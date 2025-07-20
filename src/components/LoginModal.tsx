@@ -63,38 +63,38 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   return (
     <>
       <div
-        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm"
         onClick={onClose}
       />
       
       <div
-        className="fixed right-0 top-0 h-full w-full max-w-md shadow-2xl z-50 overflow-hidden"
-        style={{ backgroundColor: 'rgb(60, 61, 55)' }}
+        className="fixed right-0 top-0 h-full w-full max-w-lg shadow-2xl z-50 overflow-hidden luxury-card rounded-l-2xl"
+        style={{ backgroundColor: 'var(--card-bg)', borderLeft: '3px solid var(--border-color)' }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="h-full flex flex-col overflow-y-auto">
-          <div className="p-8 flex-1">
+          <div className="p-10 flex-1">
             {/* Header - Logo removed to prevent scroll issues */}
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-semibold text-[rgb(236,223,204)]">
+              <h2 className="text-3xl font-semibold text-[var(--text-primary)] font-['Playfair_Display']">
                 {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
               </h2>
               <button
                 onClick={onClose}
-                className="text-[rgb(105,117,101)] hover:text-[rgb(236,223,204)]"
+                className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-all duration-300 p-2 rounded-xl hover:bg-[var(--primary-accent)] hover:bg-opacity-10"
               >
-                <X size={24} />
+                <X size={26} />
               </button>
             </div>
 
             {/* Tabs */}
-            <div className="flex mb-8 rounded-lg p-1" style={{ backgroundColor: 'rgb(24, 28, 20)' }}>
+            <div className="flex mb-8 rounded-xl p-1 border-2 border-[var(--border-color)]" style={{ backgroundColor: 'var(--secondary-bg)' }}>
               <button
                 onClick={() => setActiveTab('login')}
                 className={`flex-1 py-3 px-4 rounded-md text-sm font-medium ${
                   activeTab === 'login'
-                    ? 'bg-[rgb(60,61,55)] text-[rgb(236,223,204)] shadow-sm'
-                    : 'text-[rgb(105,117,101)] hover:text-[rgb(236,223,204)]'
+                    ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-luxury border-2 border-[var(--border-color)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--primary-accent)]'
                 }`}
               >
                 Login
@@ -103,8 +103,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 onClick={() => setActiveTab('signup')}
                 className={`flex-1 py-3 px-4 rounded-md text-sm font-medium ${
                   activeTab === 'signup'
-                    ? 'bg-[rgb(60,61,55)] text-[rgb(236,223,204)] shadow-sm'
-                    : 'text-[rgb(105,117,101)] hover:text-[rgb(236,223,204)]'
+                    ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-luxury border-2 border-[var(--border-color)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--primary-accent)]'
                 }`}
               >
                 Sign Up
@@ -114,32 +114,32 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-6">
               {activeTab === 'signup' && (
                 <div>
-                  <Label htmlFor="name" className="text-[rgb(236,223,204)]">Full Name</Label>
+                  <Label htmlFor="name" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Full Name</Label>
                   <Input
                     id="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     required
-                    className="mt-2 bg-[rgb(24,28,20)] border-[rgb(105,117,101)] text-[rgb(236,223,204)] placeholder-[rgb(105,117,101)]"
+                    className="mt-2 luxury-input focus-luxury"
                   />
                 </div>
               )}
 
               <div>
-                <Label htmlFor="email" className="text-[rgb(236,223,204)]">Email</Label>
+                <Label htmlFor="email" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Email</Label>
                 <Input
                   id="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required
-                  className="mt-2 bg-[rgb(24,28,20)] border-[rgb(105,117,101)] text-[rgb(236,223,204)] placeholder-[rgb(105,117,101)]"
+                  className="mt-2 luxury-input focus-luxury"
                 />
               </div>
 
               <div>
-                <Label htmlFor="password" className="text-[rgb(236,223,204)]">Password</Label>
+                <Label htmlFor="password" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Password</Label>
                 <div className="relative mt-2">
                   <Input
                     id="password"
@@ -147,12 +147,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     value={formData.password}
                     onChange={(e) => setFormData({...formData, password: e.target.value})}
                     required
-                    className="pr-10 bg-[rgb(24,28,20)] border-[rgb(105,117,101)] text-[rgb(236,223,204)] placeholder-[rgb(105,117,101)]"
+                    className="pr-12 luxury-input focus-luxury"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[rgb(105,117,101)] hover:text-[rgb(236,223,204)]"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-colors duration-300"
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -162,12 +162,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               {activeTab === 'signup' && (
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="gender" className="text-[rgb(236,223,204)]">Gender</Label>
+                    <Label htmlFor="gender" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Gender</Label>
                     <select
                       id="gender"
                       value={formData.gender}
                       onChange={(e) => setFormData({...formData, gender: e.target.value})}
-                      className="mt-2 w-full px-3 py-2 border border-[rgb(105,117,101)] rounded-md focus:outline-none focus:ring-2 focus:ring-[rgb(105,117,101)] bg-[rgb(24,28,20)] text-[rgb(236,223,204)]"
+                      className="mt-2 w-full luxury-input focus-luxury"
                     >
                       <option value="">Select Gender</option>
                       <option value="Male">Male</option>
@@ -177,12 +177,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <Label htmlFor="stylePreference" className="text-[rgb(236,223,204)]">Style Preference</Label>
+                    <Label htmlFor="stylePreference" className="text-[var(--text-primary)] font-['Poppins'] font-medium">Style Preference</Label>
                     <select
                       id="stylePreference"
                       value={formData.stylePreference}
                       onChange={(e) => setFormData({...formData, stylePreference: e.target.value})}
-                      className="mt-2 w-full px-3 py-2 border border-[rgb(105,117,101)] rounded-md focus:outline-none focus:ring-2 focus:ring-[rgb(105,117,101)] bg-[rgb(24,28,20)] text-[rgb(236,223,204)]"
+                      className="mt-2 w-full luxury-input focus-luxury"
                     >
                       <option value="">Select Style</option>
                       <option value="Minimalist">Minimalist</option>
@@ -197,19 +197,26 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[rgb(236,223,204)] text-[rgb(24,28,20)] hover:bg-[rgb(220,210,190)] py-3"
+                className="w-full btn-primary py-4 text-base font-medium shadow-luxury hover-lift"
               >
-                {loading ? 'Please wait...' : (activeTab === 'login' ? 'Sign In' : 'Create Account')}
+                {loading ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span>Please wait...</span>
+                  </div>
+                ) : (
+                  activeTab === 'login' ? 'Sign In' : 'Create Account'
+                )}
               </Button>
             </form>
 
             <div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-[rgb(105,117,101)]" />
+                  <div className="w-full border-t-2 border-[var(--border-color)]" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 text-[rgb(105,117,101)]" style={{ backgroundColor: 'rgb(60, 61, 55)' }}>Or</span>
+                  <span className="px-4 text-[var(--text-secondary)] font-['Poppins'] font-medium" style={{ backgroundColor: 'var(--card-bg)' }}>Or</span>
                 </div>
               </div>
 
@@ -217,7 +224,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 onClick={handleGoogleSignIn}
                 disabled={loading}
                 variant="outline"
-                className="w-full mt-4 py-3 bg-transparent border-[rgb(105,117,101)] text-[rgb(236,223,204)] hover:bg-[rgb(24,28,20)] flex items-center justify-center space-x-3"
+                className="w-full mt-6 py-4 bg-transparent border-2 border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--primary-accent)] hover:text-white flex items-center justify-center space-x-3 rounded-xl transition-all duration-300 shadow-luxury hover-lift font-['Poppins']"
               >
                 <div className="w-5 h-5 flex items-center justify-center">
                   <svg viewBox="0 0 24 24" className="w-5 h-5">
@@ -231,13 +238,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               </Button>
             </div>
 
-            <div className="mt-6 text-center text-sm text-[rgb(105,117,101)]">
+            <div className="mt-8 text-center text-sm text-[var(--text-secondary)] font-['Poppins']">
               {activeTab === 'login' ? (
                 <>
                   Don't have an account?{' '}
                   <button
                     onClick={() => setActiveTab('signup')}
-                    className="text-[rgb(236,223,204)] hover:underline font-medium"
+                    className="text-[var(--primary-accent)] hover:underline font-medium transition-all duration-300"
                   >
                     Sign up
                   </button>
@@ -247,7 +254,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   Already have an account?{' '}
                   <button
                     onClick={() => setActiveTab('login')}
-                    className="text-[rgb(236,223,204)] hover:underline font-medium"
+                    className="text-[var(--primary-accent)] hover:underline font-medium transition-all duration-300"
                   >
                     Log in
                   </button>
