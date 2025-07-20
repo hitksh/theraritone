@@ -211,7 +211,6 @@ const ChatWidget: React.FC = () => {
                         className={`flex ${message.isAdmin ? 'justify-start' : 'justify-end'}`}
                       >
                         <div
-                          className={`max-w-xs px-4 py-3 rounded-xl text-sm transition-all duration-300 font-['Poppins'] ${
                           className={`max-w-xs px-4 py-3 rounded-xl text-sm transition-all duration-300 font-['Inter'] ${
                             message.isAdmin
                               ? 'luxury-card border-2 border-[var(--border-color)] shadow-luxury'
